@@ -1,3 +1,5 @@
+package base;
+
 /***********************************************************************
  * Module:  Mahasiswa.java
  * Author:  renol
@@ -19,6 +21,10 @@ public class Mahasiswa extends Manusia {
    /** @pdOid 1232a4c4-0bfc-48ba-be87-6fffb9ea7072 */
    public Mahasiswa() {
       // TODO: implement
+   }
+   public Mahasiswa(String nama, String nik, String agama, String jenisKelamin, String email, Date tanggalLahir, String alamat, String nim, String npp, String id) {
+      // TODO: implement
+      super(nama, nik, agama, jenisKelamin, email, tanggalLahir, alamat);
    }
    
    /** @pdOid 9ef885b2-d4b4-45e1-9785-6bca25f12c7f */

@@ -1,3 +1,5 @@
+package base;
+
 /***********************************************************************
  * Module:  JadwalKerjaPraktek.java
  * Author:  renol

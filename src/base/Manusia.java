@@ -1,3 +1,5 @@
+package base;
+
 /***********************************************************************
  * Module:  Manusia.java
  * Author:  renol
@@ -26,6 +28,17 @@ public class Manusia {
    /** @pdOid cd45335a-b1b1-45a0-89bb-7d6e38f2d04c */
    public Manusia() {
       // TODO: implement
+   }
+   
+   public Manusia(String nama, String nik, String agama, String jenisKelamin, String email, Date tanggalLahir, String alamat) {
+      // TODO: implement
+       setnama(nama);
+       setnik(nik);
+       setagama(agama);
+       setjenisKelamin(jenisKelamin);
+       setemail(email);
+       settanggalLahir(tanggalLahir);
+       setalamat(alamat);
    }
    
    /** @pdOid 03dd3bbd-cff1-4f97-b620-1d0fb9c93a9b */

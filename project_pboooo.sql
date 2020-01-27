@@ -1,4 +1,10 @@
 /*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     Tue 28.01.20 00:41:34                        */
+/*==============================================================*/
+
+
+/*==============================================================*/
 /* Table: Prodi                                                 */
 /*==============================================================*/
 create table Prodi
@@ -23,17 +29,58 @@ create table JadwalKerjaPraktek
 );
 
 /*==============================================================*/
+/* Table: Dosen                                                 */
+/*==============================================================*/
+create table Dosen
+(
+   nidn                 varchar(254) not null  comment '',
+   nama                 varchar(254)  comment '',
+   nik                  varchar(254)  comment '',
+   agama                varchar(254)  comment '',
+   jenisKelamin         varchar(254)  comment '',
+   email                varchar(254)  comment '',
+   tanggalLahir         datetime  comment '',
+   alamat               varchar(254)  comment '',
+   primary key (nidn)
+);
+
+/*==============================================================*/
+/* Table: Mahasiswa                                             */
+/*==============================================================*/
+create table Mahasiswa
+(
+   nim                  varchar(254) not null  comment '',
+   idProdi              varchar(254)  comment '',
+   nidn                 varchar(254)  comment '',
+   nama                 varchar(254)  comment '',
+   nik                  varchar(254)  comment '',
+   agama                varchar(254)  comment '',
+   jenisKelamin         varchar(254)  comment '',
+   email                varchar(254)  comment '',
+   tanggalLahir         datetime  comment '',
+   alamat               varchar(254)  comment '',
+   primary key (nim),
+   constraint FK_MAHASISW_ASSOCIATI_PRODI foreign key (idProdi)
+      references Prodi (idProdi) on delete restrict on update restrict,
+   constraint FK_MAHASISW_ASSOCIATI_DOSEN foreign key (nidn)
+      references Dosen (nidn) on delete restrict on update restrict
+);
+
+/*==============================================================*/
 /* Table: KerjaPraktek                                          */
 /*==============================================================*/
 create table KerjaPraktek
 (
    idKp                 int not null auto_increment  comment '',
+   nim                  varchar(254)  comment '',
    idJadwal             int  comment '',
    namaKegiatan         varchar(254)  comment '',
    instansi             varchar(254)  comment '',
    primary key (idKp),
    constraint FK_KERJAPRA_ASSOCIATI_JADWALKE foreign key (idJadwal)
-      references JadwalKerjaPraktek (idJadwal) on delete restrict on update restrict
+      references JadwalKerjaPraktek (idJadwal) on delete restrict on update restrict,
+   constraint FK_KERJAPRA_ASSOCIATI_MAHASISW foreign key (nim)
+      references Mahasiswa (nim) on delete restrict on update restrict
 );
 
 /*==============================================================*/
@@ -55,30 +102,14 @@ create table PersetujuanDosen
 create table PersetujuanProdi
 (
    idAccProdi           int not null auto_increment  comment '',
-   idAccDosen           int  comment '',
    idProdi              varchar(254)  comment '',
+   idAccDosen           int  comment '',
    accProdi             bool  comment '',
    primary key (idAccProdi),
    constraint FK_PERSETUJ_ASSOCIATI_PRODI foreign key (idProdi)
       references Prodi (idProdi) on delete restrict on update restrict,
    constraint FK_PERSETUJ_ASSOCIATI_PERSETUJ foreign key (idAccDosen)
       references PersetujuanDosen (idAccDosen) on delete restrict on update restrict
-);
-
-/*==============================================================*/
-/* Table: Dosen                                                 */
-/*==============================================================*/
-create table Dosen
-(
-   nidn                 varchar(254) not null  comment '',
-   nama                 varchar(254)  comment '',
-   nik                  varchar(254)  comment '',
-   agama                varchar(254)  comment '',
-   jenisKelamin         varchar(254)  comment '',
-   email                varchar(254)  comment '',
-   tanggalLahir         datetime  comment '',
-   alamat               varchar(254)  comment '',
-   primary key (nidn)
 );
 
 /*==============================================================*/
@@ -122,31 +153,6 @@ create table HistoryJabatan
    constraint FK_HISTORYJ_ASSOCIATI_JABATAN foreign key (idJabatan)
       references Jabatan (idJabatan) on delete restrict on update restrict,
    constraint FK_HISTORYJ_ASSOCIATI_DOSEN foreign key (nidn)
-      references Dosen (nidn) on delete restrict on update restrict
-);
-
-/*==============================================================*/
-/* Table: Mahasiswa                                             */
-/*==============================================================*/
-create table Mahasiswa
-(
-   nim                  varchar(254) not null  comment '',
-   idProdi              varchar(254)  comment '',
-   nidn                 varchar(254)  comment '',
-   idKp                 int  comment '',
-   nama                 varchar(254)  comment '',
-   nik                  varchar(254)  comment '',
-   agama                varchar(254)  comment '',
-   jenisKelamin         varchar(254)  comment '',
-   email                varchar(254)  comment '',
-   tanggalLahir         datetime  comment '',
-   alamat               varchar(254)  comment '',
-   primary key (nim),
-   constraint FK_MAHASISW_ASSOCIATI_KERJAPRA foreign key (idKp)
-      references KerjaPraktek (idKp) on delete restrict on update restrict,
-   constraint FK_MAHASISW_ASSOCIATI_PRODI foreign key (idProdi)
-      references Prodi (idProdi) on delete restrict on update restrict,
-   constraint FK_MAHASISW_ASSOCIATI_DOSEN foreign key (nidn)
       references Dosen (nidn) on delete restrict on update restrict
 );
 
