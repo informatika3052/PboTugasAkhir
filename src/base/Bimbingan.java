@@ -6,6 +6,8 @@ package base;
  * Purpose: Defines the Class Bimbingan
  ***********************************************************************/
 
+import connect.*;
+import java.sql.*;
 import java.util.*;
 
 /** @pdOid 65aa89e5-82cf-4d5a-9f6c-4e2ba7ff8f8e */
@@ -23,6 +25,13 @@ public class Bimbingan {
    /** @pdOid 60ef62e0-138a-4729-9329-cab35970ed68 */
    public Bimbingan() {
       // TODO: implement
+   }
+   
+   public Bimbingan(String accPembimbing, int idAccProdi, String npp) {
+      // TODO: implement
+       setaccPembimbing(accPembimbing);
+       persetujuanProdi = new PersetujuanProdi().satuDB(idAccProdi);
+       dosen = new Dosen().satuDB(npp);
    }
    
    /** @pdOid 7391d24d-8c52-4247-9ef6-f647d0ec48bd */
@@ -47,4 +56,27 @@ public class Bimbingan {
       accPembimbing = newAccPembimbing;
    }
 
+   public Bimbingan satuDB(int idBimbing){
+       Bimbingan bim = new Bimbingan();
+       String query = "SELECT * FROM bimbingan WHERE idBimbing = (?)";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, getidBimbing());
+           ResultSet rs = statement.executeQuery();
+           
+           if(rs.next()){
+               bim.setidBimbing(rs.getInt("idBimbing"));
+               bim.persetujuanProdi = new PersetujuanProdi().satuDB(rs.getInt("idAccProdi"));
+               bim.dosen = new Dosen().satuDB(rs.getString("nidn"));
+               bim.setaccPembimbing(rs.getString("accPembimbing"));
+               
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return bim;
+   }
 }

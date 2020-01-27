@@ -25,6 +25,7 @@ public class Mahasiswa extends Manusia {
    public Mahasiswa(String nama, String nik, String agama, String jenisKelamin, String email, Date tanggalLahir, String alamat, String nim, String npp, String id) {
       // TODO: implement
       super(nama, nik, agama, jenisKelamin, email, tanggalLahir, alamat);
+      
    }
    
    /** @pdOid 9ef885b2-d4b4-45e1-9785-6bca25f12c7f */
