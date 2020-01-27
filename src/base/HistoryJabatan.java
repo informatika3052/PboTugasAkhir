@@ -1,3 +1,5 @@
+package base;
+
 /***********************************************************************
  * Module:  HistoryJabatan.java
  * Author:  renol
