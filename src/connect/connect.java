@@ -25,7 +25,7 @@ public class connect {
                 String timezone = "?usetimezone=true&serverTimezone=UTC";
                 String namaDB, user, pass;
                 
-                namaDB = "tugas_akhir";//sesuaikan dengan nama database di mySQL
+                namaDB = "revisi";//sesuaikan dengan nama database di mySQL
                 user = "root";//sesuaikan dengan username di mySQL
                 pass = "";//sesuaikan dengan password di mySQL default ("")
             
