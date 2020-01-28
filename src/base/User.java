@@ -6,7 +6,12 @@ package base;
  * Purpose: Defines the Class User
  ***********************************************************************/
 
+import connect.connect;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /** @pdOid 2945f811-1899-4eee-be51-a9c82fd0e3ca */
 public class User {
@@ -55,4 +60,79 @@ public class User {
       tipeUser = newTipeUser;
    }
 
- }
+   public User satuDB(String key){
+       User user = new User();
+       try{
+           String query = "SELECT * FROM User WHERE username = (?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, key);
+           ResultSet rs = statement.executeQuery();
+           if(rs.next()){
+               user.setusername(rs.getString("username"));
+               user.setpassword(rs.getString("password"));
+               user.settipeUser(rs.getString("tipeUser"));
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return user;
+   }
+   
+   public void masukDB(){
+       try{
+           String query = "INSERT INTO User VALUES (?, ?, ?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, getusername());
+           statement.setString(2, getpassword());
+           statement.setString(3, gettipeUser());
+           
+           statement.execute();
+           statement.close();
+           }
+       catch(SQLException e){
+           
+       }
+   }
+
+public void updateDB(){
+       try{
+           String query = "UPDATE User SET password = (?), tipeUser = (?) WHERE username = (?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, getpassword());
+           statement.setString(2, gettipeUser());
+           statement.setString(3, getusername());
+           
+           statement.execute();
+           statement.close();
+           }
+       catch(SQLException e){
+           
+       }
+   }
+public boolean cekLogin(String username, String pass){
+       User usr = new User().satuDB(username);
+       if((usr.getusername() == null)||(usr.getusername().equals("")))
+       {
+           JOptionPane.showMessageDialog(null, "Username tidak terdaftar!");
+           return false;
+       }
+       else
+       {
+           if(usr.getpassword().equals(pass))
+           {
+               setusername(usr.getusername());
+               setpassword(usr.getpassword());
+               settipeUser(usr.gettipeUser());
+                return true;
+           }
+           else
+           {
+               JOptionPane.showMessageDialog(null, "Password Salah!");
+               return false;
+           }
+       }
+   }
+}
