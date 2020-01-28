@@ -106,4 +106,19 @@ public class Prodi {
            
        }
    }
+   public void updateDB(){
+       try{
+           String query = "UPDATE Prodi SET namaProdi = (?) WHERE idProdi = (?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, getnamaProdi());           
+           statement.setString(2, getidProdi());
+
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
+
 }
