@@ -6,13 +6,12 @@ package base;
  * Purpose: Defines the Class User
  ***********************************************************************/
 
+
 import connect.connect;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
 import javax.swing.JOptionPane;
-
 /** @pdOid 2945f811-1899-4eee-be51-a9c82fd0e3ca */
 public class User {
    /** @pdOid 19a65872-cbc1-40dc-83c0-32003d017252 */
@@ -25,6 +24,12 @@ public class User {
    /** @pdOid 72b79995-7c46-4bfc-bd3a-45370f1c1608 */
    public User() {
       // TODO: implement
+   }
+    public User(String username,String password, String typeUser) {
+      // TODO: implement
+       setusername(username);
+       setpassword(password);
+       settipeUser(typeUser);
    }
    
    /** @pdOid 46235bbd-03cb-4147-8174-c36e35287b59 */

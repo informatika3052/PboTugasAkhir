@@ -56,7 +56,7 @@ public class FrameDoswal extends javax.swing.JFrame {
      }
      public void KerjaPraktekDB(){
         setKerjaPraktek(new KerjaPraktek());
-        getKerjaPraktek().setidKp(WIDTH);
+        //getKerjaPraktek().setidKp().toString();
         getKerjaPraktek().setnamaKegiatan("");
         getKerjaPraktek().setinstansi("");
        

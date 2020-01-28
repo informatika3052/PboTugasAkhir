@@ -6,13 +6,19 @@
 package gui;
 
 import javax.swing.JOptionPane;
-
+import base.*;
 /**
  *
  * @author Jempol
  */
 public class FrameMahasiswa extends javax.swing.JFrame {
-
+    private User user = new User();	
+    private Dosen dosen = new Dosen();
+    private Mahasiswa mahasiswa = new Mahasiswa();
+    private KerjaPraktek kerjaPraktek = new KerjaPraktek();
+    private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
+    private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
+    private Bimbingan bimbingan = new Bimbingan();
     /**
      * Creates new form FrameMahasiswa
      */
@@ -33,6 +39,13 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_dospem.setVisible(false);
         txt_status.setVisible(false);
     }
+    
+     public FrameMahasiswa(User user) {
+        super("Mahasiswa : " + (new Mahasiswa().satuDB(user.getusername())).getnama());
+        setUser(user);
+        setMahasiswa(new Mahasiswa().satuDB(user.getusername()));
+        initComponents();
+     }
 //    public void hideShowAll(boolean bool){
 //        
 //    }
@@ -311,4 +324,51 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField txt_semester;
     private javax.swing.JTextField txt_status;
     // End of variables declaration//GEN-END:variables
+
+   public User getUser() {
+        return user;
+    }
+   public void setUser(User user) {
+        this.user = user;
+    }
+    public Dosen getDosen() {
+        return dosen;
+    }
+    public void setDosen(Dosen dosen) {
+        this.dosen = dosen;
+    }
+    public KerjaPraktek getKerjaPraktek() {
+        return kerjaPraktek;
+    }
+    public void setKerjaPraktek(KerjaPraktek kerjaPraktek) {
+        this.kerjaPraktek = kerjaPraktek;
+    }
+    public Mahasiswa getMahasiswa() {
+        return mahasiswa;
+    }
+    public void setMahasiswa(Mahasiswa mahasiswa) {
+        this.mahasiswa = mahasiswa;
+    }
+    public PersetujuanDosen getPersetujuanDosen() {
+        return persetujuanDosen;
+    }
+
+    public void setPersetujuanDosen(PersetujuanDosen persetujuanDosen) {
+        this.persetujuanDosen = persetujuanDosen;
+    }
+    public PersetujuanProdi getPersetujuanProdi() {
+        return persetujuanProdi;
+    }
+
+    public void setPersetujuanProdi(PersetujuanProdi persetujuanProdi) {
+        this.persetujuanProdi = persetujuanProdi;
+    }
+
+    public Bimbingan getbimbingan() {
+        return bimbingan;
+    }
+
+    public void setBimbingan(Bimbingan bimbingan) {
+        this.bimbingan = bimbingan;
+    }
 }
