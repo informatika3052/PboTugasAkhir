@@ -271,7 +271,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         hideShowAll(false);
         setComboxAll();
         switch (opsiComboBox.getSelectedItem().toString()){
-            case "-Tambah Baru-" :
+            case "-- pilih --" :
             {
                 hideShowId(false);
                 break;
@@ -296,15 +296,15 @@ public class FrameAdmin extends javax.swing.JFrame {
         switch (opsiComboBox.getSelectedItem().toString()){
             case "Mahasiswa" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().updateToDatabase();
-//
-//                getMahasiswa().setNim(idTextField.getText());
-//
-//                getMahasiswa().DosenPembimbingMahasiswa = null;
-//                getMahasiswa().ProdiDalamMahasiswa = null;
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().updateDB();
+
+                getMahasiswa().setnim(idTextField.getText());
+
+                getMahasiswa().dosen = null;
+                getMahasiswa().prodi = null;
                 if(dsnComboBox.getSelectedIndex() != 0)
                 {
                   //  getMahasiswa().DosenPembimbingMahasiswa = new Dosen().getSingleNamaDatabase(dsnComboBox.getSelectedItem().toString());
@@ -312,52 +312,52 @@ public class FrameAdmin extends javax.swing.JFrame {
 
                 if(prodiComboBox.getSelectedIndex() != 0)
                 {
-                //    getMahasiswa().ProdiDalamMahasiswa = new Prodi().getSingleNamaDatabase(prodiComboBox.getSelectedItem().toString());
+                    getMahasiswa().prodi = new Prodi().satuDB(prodiComboBox.getSelectedItem().toString());
                 }
 
-//                getMahasiswa().setNama(namaTextField.getText());
-//                getMahasiswa().setNik(nikTextField.getText());
-//                getMahasiswa().setTanggalLahir(tglLahir.getDate());
-//                getMahasiswa().setJenisKelamin((LRadioButton.isSelected())? 'L' : 'P');
-//                getMahasiswa().setAlamat(alamatTextField.getText());
-//                getMahasiswa().setEmail(emailTextField.getText());
-//                getMahasiswa().setAgama(agamaComboBox.getSelectedItem().toString());
-//
-//                getMahasiswa().updateDatabase();
+                getMahasiswa().setnama(namaTextField.getText());
+                getMahasiswa().setnik(nikTextField.getText());
+                getMahasiswa().settanggalLahir(tglLahir.getDate());
+                getMahasiswa().setjenisKelamin((LRadioButton.isSelected())? "L" : "P");
+                getMahasiswa().setalamat(alamatTextField.getText());
+                getMahasiswa().setemail(emailTextField.getText());
+                getMahasiswa().setagama(agamaComboBox.getSelectedItem().toString());
+
+                getMahasiswa().updateDB();
                 break;
             }
 
             case "Dosen" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().insertToDatabase();
-//
-//                getDosen().setNpp(idTextField.getText());
-//                getDosen().setNama(namaTextField.getText());
-//                getDosen().setNik(nikTextField.getText());
-//                getDosen().setTanggalLahir(tglLahir.getDate());
-//                getDosen().setJenisKelamin((LRadioButton.isSelected())? 'L' : 'P');
-//                getDosen().setAlamat(alamatTextField.getText());
-//                getDosen().setEmail(emailTextField.getText());
-//                getDosen().setAgama(agamaComboBox.getSelectedItem().toString());
-//
-//                getDosen().updateDatabase();
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().masukDB();
+
+                getDosen().setnidn(idTextField.getText());
+                getDosen().setnama(namaTextField.getText());
+                getDosen().setnik(nikTextField.getText());
+                getDosen().settanggalLahir(tglLahir.getDate());
+                getDosen().setjenisKelamin((LRadioButton.isSelected())? "L" : "P");
+                getDosen().setalamat(alamatTextField.getText());
+                getDosen().setemail(emailTextField.getText());
+                getDosen().setagama(agamaComboBox.getSelectedItem().toString());
+
+                getDosen().updateDB();
                 break;
             }
 
             case "Prodi" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().insertToDatabase();
-//
-//                getProdi().setIdProdi(idTextField.getText());
-//                getProdi().setNamaProdi(namaTextField.getText());
-//
-//                getProdi().updateDatabase();
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().masukDB();
+
+                getProdi().setidProdi(idTextField.getText());
+                getProdi().setnamaProdi(namaTextField.getText());
+
+                getProdi().updateDB();
                 break;
             }
         }
@@ -366,71 +366,71 @@ public class FrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
-        // TODO add your handling code here:
+         
         switch (opsiComboBox.getSelectedItem().toString()){
             case "Mahasiswa" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().insertToDatabase();
-//
-//                getMahasiswa().setNim(idTextField.getText());
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().insertToDatabase();
+
+                getMahasiswa().setnim(idTextField.getText());
 
                 if(dsnComboBox.getSelectedIndex() != 0)
                 {
-         //           getMahasiswa().DosenPembimbingMahasiswa = new Dosen().getSingleNamaDatabase(dsnComboBox.getSelectedItem().toString());
+                    getMahasiswa().dosen = new Dosen().satuDB(dsnComboBox.getSelectedItem().toString());
                 }
 
                 if(prodiComboBox.getSelectedIndex() != 0)
                 {
-           //         getMahasiswa().ProdiDalamMahasiswa = new Prodi().getSingleNamaDatabase(prodiComboBox.getSelectedItem().toString());
+                    getMahasiswa().prodi = new Prodi().satuDB(prodiComboBox.getSelectedItem().toString());
                 }
 
-//                getMahasiswa().setNama(namaTextField.getText());
-//                getMahasiswa().setNik(nikTextField.getText());
-//                getMahasiswa().setTanggalLahir(tglLahir.getDate());
-//                getMahasiswa().setJenisKelamin((LRadioButton.isSelected())? 'L' : 'P');
-//                getMahasiswa().setAlamat(alamatTextField.getText());
-//                getMahasiswa().setEmail(emailTextField.getText());
-//                getMahasiswa().setAgama(agamaComboBox.getSelectedItem().toString());
-//
-//                getMahasiswa().insertToDatabase();
+                getMahasiswa().setnama(namaTextField.getText());
+                getMahasiswa().setnik(nikTextField.getText());
+                getMahasiswa().settanggalLahir(tglLahir.getDate());
+                getMahasiswa().setjenisKelamin((LRadioButton.isSelected())? "L" : "P");
+                getMahasiswa().setalamat(alamatTextField.getText());
+                getMahasiswa().setemail(emailTextField.getText());
+                getMahasiswa().setagama(agamaComboBox.getSelectedItem().toString());
+
+                getMahasiswa().insertToDatabase();
                 break;
             }
 
             case "Dosen" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().insertToDatabase();
-//
-//                getDosen().setNpp(idTextField.getText());
-//                getDosen().setNama(namaTextField.getText());
-//                getDosen().setNik(nikTextField.getText());
-//                getDosen().setTanggalLahir(tglLahir.getDate());
-//                getDosen().setJenisKelamin((LRadioButton.isSelected())? 'L' : 'P');
-//                getDosen().setAlamat(alamatTextField.getText());
-//                getDosen().setEmail(emailTextField.getText());
-//                getDosen().setAgama(agamaComboBox.getSelectedItem().toString());
-//
-//                getDosen().insertToDatabase();
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().insertToDatabase();
+
+                getDosen().setnidn(idTextField.getText());
+                getDosen().setnama(namaTextField.getText());
+                getDosen().setnik(nikTextField.getText());
+                getDosen().settanggalLahir(tglLahir.getDate());
+                getDosen().setjenisKelamin((LRadioButton.isSelected())? "L" : "P");
+                getDosen().setalamat(alamatTextField.getText());
+                getDosen().setemail(emailTextField.getText());
+                getDosen().setagama(agamaComboBox.getSelectedItem().toString());
+
+                getDosen().insertToDatabase();
                 break;
             }
 
             case "Prodi" :
             {
-//                getUser().setUsername(idTextField.getText());
-//                getUser().setPassword(kataSandiTextField.getText());
-//                getUser().setTypeUser(opsiComboBox.getSelectedItem().toString());
-//                getUser().insertToDatabase();
-//
-//                getProdi().setIdProdi(idTextField.getText());
-//                getProdi().setNamaProdi(namaTextField.getText());
-//
-//                getProdi().insertToDatabase();
-//                break;
+                getUser().setusername(idTextField.getText());
+                getUser().setpassword(kataSandiTextField.getText());
+                getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
+                getUser().insertToDatabase();
+
+                getProdi().setidProdi(idTextField.getText());
+                getProdi().setnamaProdi(namaTextField.getText());
+
+                getProdi().insertToDatabase();
+                break;
             }
         }
         JOptionPane.showMessageDialog(null, "Data Sudah di simpan");
@@ -438,119 +438,121 @@ public class FrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_simpanButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+         
         new login_user().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariButtonActionPerformed
-        // TODO add your handling code here:
-//        setComboxAll();
-//        setUser(new User());
-//        setMahasiswa(new Mahasiswa());
-//        setDosen(new Dosen());
-//        setProdi(new Prodi());
-//        setDefaultTeksField();
-//        switch (opsiComboBox.getSelectedItem().toString()){
-//            case "Mahasiswa" :
-//            {
-////                setUser(new User().getSingleDatabase(idTextField.getText()));
-////                setMahasiswa(new Mahasiswa().getSingleDatabase(idTextField.getText()));
-////                if ((getMahasiswa().getNama() == null) || (getMahasiswa().getNama() == "") || (getMahasiswa().getNama() == "id")){
-////                    hideShowAll(true);
-////                    updateButton.setVisible(false);
-////                }
-////                else
-////                {
-////                    hideShowAll(true);
-////                    simpanButton.setVisible(false);
-////                    kataSandiTextField.setText(getUser().getPassword());
-////                    namaTextField.setText(getMahasiswa().getNama());
-////                    nikTextField.setText(getMahasiswa().getNik());
-////                    tglLahir.setDate(getMahasiswa().getTanggalLahir());
-////                    if (getMahasiswa().getJenisKelamin() == 'L') {
-////                        LRadioButton.setSelected(true);
-////                    }
-////                    else
-////                    {
-////                        PRadioButton.setSelected(true);
-////                    }
-////                    alamatTextField.setText(getMahasiswa().getAlamat());
-////                    emailTextField.setText(getMahasiswa().getEmail());
-////                    agamaComboBox.setSelectedItem(getMahasiswa().getAgama());
-////                    if(getMahasiswa().DosenPembimbingMahasiswa != null)
-////                    {
-////                        dsnComboBox.setSelectedItem(getMahasiswa().DosenPembimbingMahasiswa.getNama());
-////                    }
-////                    if(getMahasiswa().ProdiDalamMahasiswa != null)
-////                    {
-////                        prodiComboBox.setSelectedItem(getMahasiswa().ProdiDalamMahasiswa.getNamaProdi());
-////                    }
-//                }
-//                break;
-//            
-//
-//            case "Dosen" :
-//            {
-////                setUser(new User().getSingleDatabase(idTextField.getText()));
-////                setDosen(new Dosen().getSingleDatabase(idTextField.getText()));
-////                if ((getDosen().getNama() == null) || (getDosen().getNama() == "") || (getDosen().getNama() == "id")){
-////                    hideShowAll(true);
-////                    updateButton.setVisible(false);
-////                    dsnPembLabel.setVisible(false);
-////                    dsnComboBox.setVisible(false);
-//                }
-////                else
-////                {
-////                    hideShowAll(true);
-////                    dsnPembLabel.setVisible(false);
-////                    dsnComboBox.setVisible(false);
-////                    simpanButton.setVisible(false);
-////                    kataSandiTextField.setText(getUser().getPassword());
-////                    namaTextField.setText(getDosen().getNama());
-////                    nikTextField.setText(getDosen().getNik());
-////                    tglLahir.setDate(getDosen().getTanggalLahir());
-////                    if (getDosen().getJenisKelamin() == 'L') {
-////                        LRadioButton.setSelected(true);
-////                    }
-////                    else
-////                    {
-////                        PRadioButton.setSelected(true);
-////                    }
-////                    alamatTextField.setText(getDosen().getAlamat());
-////                    emailTextField.setText(getDosen().getEmail());
-////                    agamaComboBox.setSelectedItem(getDosen().getAgama());
-////                }
-//                break;
-//            
-//
-//            case "Prodi" :
-//            {
-////                setUser(new User().getSingleDatabase(idTextField.getText()));
-////                setProdi(new Prodi().getSingleDatabase(idTextField.getText()));
-////                if ((getProdi().getNamaProdi() == null) || (getProdi().getNamaProdi() == "") || (getProdi().getNamaProdi() == "id")){
-////                    hideShowAll(false);
-////                    kataSandiLabel.setVisible(true);
-////                    kataSandiTextField.setVisible(true);
-////                    namaLabel.setVisible(true);
-////                    namaTextField.setVisible(true);
-////                    simpanButton.setVisible(true);
-////                }
-////                else
-////                {
-////                    hideShowAll(false);
-////                    kataSandiLabel.setVisible(true);
-////                    kataSandiTextField.setVisible(true);
-////                    namaLabel.setVisible(true);
-////                    namaTextField.setVisible(true);
-////                    kataSandiTextField.setText(getUser().getPassword());
-////                    namaTextField.setText(getProdi().getNamaProdi());
-////                    updateButton.setVisible(true);
-////                }
-////                break;
-//            
-    }//GEN-LAST:event_cariButtonActionPerformed
+         
+        setComboxAll();
+        setUser(new User());
+        setMahasiswa(new Mahasiswa());
+        setDosen(new Dosen());
+        setProdi(new Prodi());
+        setDefaultTeksField();
+        switch (opsiComboBox.getSelectedItem().toString()){
+            case "Mahasiswa" :
+            {
+                setUser(new User().satuDB(idTextField.getText()));
+                setMahasiswa(new Mahasiswa().satuDB(idTextField.getText()));
+                if ((getMahasiswa().getnama() == null) || (getMahasiswa().getnama() == "") || (getMahasiswa().getnama() == "id")){
+                    hideShowAll(true);
+                    updateButton.setVisible(false);
+                }
+                else
+                {
+                    hideShowAll(true);
+                    simpanButton.setVisible(false);
+                    kataSandiTextField.setText(getUser().getpassword());
+                    namaTextField.setText(getMahasiswa().getnama());
+                    nikTextField.setText(getMahasiswa().getnik());
+                    tglLahir.setDate(getMahasiswa().gettanggalLahir());
+                    if (getMahasiswa().getjenisKelamin().charAt(0) == 'L') {
+                        LRadioButton.setSelected(true);
+                    }
+                    else
+                    {
+                        PRadioButton.setSelected(true);
+                    }
+                    alamatTextField.setText(getMahasiswa().getalamat());
+                    emailTextField.setText(getMahasiswa().getemail());
+                    agamaComboBox.setSelectedItem(getMahasiswa().getagama());
+                    if(getMahasiswa().dosen != null)
+                    {
+                        dsnComboBox.setSelectedItem(getMahasiswa().dosen.getnama());
+                    }
+                    if(getMahasiswa().prodi != null)
+                    {
+                        prodiComboBox.setSelectedItem(getMahasiswa().prodi.getnamaProdi());
+                    }
+                }
+            
+                break;
+        
+            }
 
+            case "Dosen" :
+            {
+                setUser(new User().satuDB(idTextField.getText()));
+                setDosen(new Dosen().satuDB(idTextField.getText()));
+                if ((getDosen().getnama() == null) || (getDosen().getnama() == "") || (getDosen().getnama() == "id")){
+                    hideShowAll(true);
+                    updateButton.setVisible(false);
+                    dsnPembLabel.setVisible(false);
+                    dsnComboBox.setVisible(false);
+                }
+                else
+                {
+                    hideShowAll(true);
+                    dsnPembLabel.setVisible(false);
+                    dsnComboBox.setVisible(false);
+                    simpanButton.setVisible(false);
+                    kataSandiTextField.setText(getUser().getpassword());
+                    namaTextField.setText(getDosen().getnama());
+                    nikTextField.setText(getDosen().getnik());
+                    tglLahir.setDate(getDosen().gettanggalLahir());
+                    if (getDosen().getjenisKelamin().charAt(0) == 'L') {
+                        LRadioButton.setSelected(true);
+                    }
+                    else
+                    {
+                        PRadioButton.setSelected(true);
+                    }
+                    alamatTextField.setText(getDosen().getalamat());
+                    emailTextField.setText(getDosen().getemail());
+                    agamaComboBox.setSelectedItem(getDosen().getagama());
+                }
+                break;
+            
+            }
+            case "Prodi" :
+            {
+                setUser(new User().getSingleDatabase(idTextField.getText()));
+                setProdi(new Prodi().satuDB(idTextField.getText()));
+                if ((getProdi().getnamaProdi() == null) || (getProdi().getnamaProdi() == "") || (getProdi().getnamaProdi() == "id")){
+                    hideShowAll(false);
+                    kataSandiLabel.setVisible(true);
+                    kataSandiTextField.setVisible(true);
+                    namaLabel.setVisible(true);
+                    namaTextField.setVisible(true);
+                    simpanButton.setVisible(true);
+                }
+                else
+                {
+                    hideShowAll(false);
+                    kataSandiLabel.setVisible(true);
+                    kataSandiTextField.setVisible(true);
+                    namaLabel.setVisible(true);
+                    namaTextField.setVisible(true);
+                    kataSandiTextField.setText(getUser().getpassword());
+                    namaTextField.setText(getProdi().getnamaProdi());
+                    updateButton.setVisible(true);
+                }
+                break;
+            }
+    }//GEN-LAST:event_cariButtonActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
