@@ -79,4 +79,62 @@ public class Bimbingan {
        }
        return bim;
    }
+   
+   
+   public ArrayList<Bimbingan> semuaDB(){
+       ArrayList<Bimbingan> list = new ArrayList<>();
+       String query = "SELECT * FROM Bimbingan";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           ResultSet rs = statement.executeQuery();
+           while(rs.next()){
+               Bimbingan bim = new Bimbingan();
+               bim.setidBimbing(rs.getInt("idBimbing"));
+               bim.persetujuanProdi = new PersetujuanProdi().satuDB(rs.getInt("idAccProdi"));
+               bim.dosen = new Dosen().satuDB(rs.getString("nidn"));
+               bim.setaccPembimbing(rs.getString("accPembimbing"));
+               
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return list;
+   }
+   
+   public void masukDB(){
+       try{
+           String query = "INSERT INTO Mahasiswa VALUES (?, ?, ?, ?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, getidBimbing());
+           statement.setInt(2, persetujuanProdi.getidAccProdi());
+           statement.setString(3, dosen.getnidn());
+           statement.setString(4, getaccPembimbing());
+           
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
+   public void updateDB(){
+       try{
+           String query = "UPDATE Bimbingan SET idBimbing= (?), idAccProdi = (?), nidn = (?), accPembimbing = (?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           
+           statement.setInt(1, getidBimbing());
+           statement.setInt(2, persetujuanProdi.getidAccProdi());
+           statement.setString(3, dosen.getnidn());
+           statement.setString(4, getaccPembimbing());
+           
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
 }
