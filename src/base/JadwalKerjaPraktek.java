@@ -117,7 +117,7 @@ public class JadwalKerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO jadwalkerjapraktek VALUES (?, ?, ?, ?)";
+           String query = "INSERT INTO jadwalkerjapraktek VALUES (null, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setInt(1, getidJadwal());
            statement.setString(2, prodi.getidProdi());
