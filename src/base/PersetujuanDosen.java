@@ -6,6 +6,10 @@ package base;
  * Purpose: Defines the Class PersetujuanDosen
  ***********************************************************************/
 
+import connect.connect;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /** @pdOid 1054d17c-c5e2-4c58-8a5a-c2f247095198 */
@@ -21,6 +25,12 @@ public class PersetujuanDosen {
    /** @pdOid 37d0dded-e0ea-4233-9112-a8b25ee2e02c */
    public PersetujuanDosen() {
       // TODO: implement
+   }
+   
+   public PersetujuanDosen(int idKp, boolean accDosen) {
+      // TODO: implement
+      kerjaPraktek = new KerjaPraktek().satuDB(idKp);
+      setAccDosen(accDosen);
    }
    
    /** @pdOid e9315f44-6aa5-4ba5-86da-653d40696538 */
@@ -45,4 +55,62 @@ public class PersetujuanDosen {
       accDosen = newAccDosen;
    }
 
+   public PersetujuanDosen satuDB(int idAccDosen){
+       PersetujuanDosen pd = new PersetujuanDosen();
+       String query = "SELECT * FROM persetujuandosen WHERE idAccDosen = (?)";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, idAccDosen);
+           ResultSet rs = statement.executeQuery();
+           
+           if(rs.next()){
+               pd.setidAccDosen(rs.getInt("idAccDosen"));
+               pd.kerjaPraktek = new KerjaPraktek().satuDB(rs.getInt("idKp"));
+               pd.setAccDosen(rs.getBoolean("accDosen"));
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return pd;
+   }
+   
+   public ArrayList<PersetujuanDosen> semuaDB(){
+       ArrayList<PersetujuanDosen> list = new ArrayList<>();
+       String query = "SELECT * FROM persetujuandosen";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           ResultSet rs = statement.executeQuery();
+           while(rs.next()){
+               PersetujuanDosen pd = new PersetujuanDosen();
+               pd.setidAccDosen(rs.getInt("idAccDosen"));
+               pd.kerjaPraktek = new KerjaPraktek().satuDB(rs.getInt("idKp"));
+               pd.setAccDosen(rs.getBoolean("accDosen"));
+               list.add(pd);
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return list;
+   }
+   
+   public void masukDB(){
+       try{
+           String query = "INSERT INTO persetujuandosen VALUES (null, ?, ?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, kerjaPraktek.getidKp());
+	   statement.setBoolean(2, getAccDosen());
+	   
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
 }
