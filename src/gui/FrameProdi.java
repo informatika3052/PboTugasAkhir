@@ -5,6 +5,7 @@
  */
 package gui;
 
+import base.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +13,12 @@ import javax.swing.JOptionPane;
  * @author Jempol
  */
 public class FrameProdi extends javax.swing.JFrame {
-
+    private User user = new User();
+    private Dosen dosen = new Dosen();
+    private Mahasiswa mahasiswa = new Mahasiswa();
+    private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
+    private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
+    private Bimbingan bimbingan = new Bimbingan();
     /**
      * Creates new form FrameProdi
      */
@@ -20,6 +26,18 @@ public class FrameProdi extends javax.swing.JFrame {
         initComponents();
     }
 
+    public FrameProdi(User user) {
+        super("Dosen : " + (new Dosen().satuDB(user.getusername())).getnama());
+        setUser(user);
+        setDosen(new Dosen().satuDB(user.getusername()));
+        initComponents();
+        nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
+        namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
+    }
+     public void setComboBox()
+     {
+        // ArrayList
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -259,4 +277,46 @@ public class FrameProdi extends javax.swing.JFrame {
     private javax.swing.JCheckBox layakCheckBox1;
     private com.toedter.calendar.JDateChooser mulaiKP;
     // End of variables declaration//GEN-END:variables
+
+
+public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public Dosen getDosen() {
+        return dosen;
+    }
+    public void setDosen(Dosen dosen) {
+        this.dosen = dosen;
+    }
+    public Mahasiswa getMahasiswa() {
+        return mahasiswa;
+    }
+    public void setMahasiswa(Mahasiswa mahasiswa) {
+        this.mahasiswa = mahasiswa;
+    }
+    public PersetujuanDosen getPersetujuanDosen() {
+        return persetujuanDosen;
+    }
+
+    public void setPersetujuanDosen(PersetujuanDosen persetujuanDosen) {
+        this.persetujuanDosen = persetujuanDosen;
+    }
+    public PersetujuanProdi getPersetujuanProdi() {
+        return persetujuanProdi;
+    }
+
+    public void setPersetujuanProdi(PersetujuanProdi persetujuanProdi) {
+        this.persetujuanProdi = persetujuanProdi;
+    }
+
+    public Bimbingan getbimbingan() {
+        return bimbingan;
+    }
+
+    public void setBimbingan(Bimbingan bimbingan) {
+        this.bimbingan = bimbingan;
+    }
 }

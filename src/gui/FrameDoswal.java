@@ -6,6 +6,8 @@
 package gui;
 
 import base.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,10 +35,19 @@ public class FrameDoswal extends javax.swing.JFrame {
         initComponents();
         nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
         namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
+	setComboBox();
     }
      public void setComboBox()
      {
-        // ArrayList
+        ArrayList<Mahasiswa> list = new Mahasiswa ().semuaDB();
+	Iterator<Mahasiswa> tiaplist = list.iterator();
+	nimNamaComboBox.removeAllItems();
+	while(tiaplist.hasNext()){
+		Mahasiswa maha = tiaplist.next();
+		if (maha.dosen.getnidn().equals(getDosen().getnidn())){
+			nimNamaComboBox.addItem(maha.getnim() + " - " + maha.getnama());
+		}
+	}
      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
