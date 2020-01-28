@@ -6,6 +6,10 @@ package base;
  * Purpose: Defines the Class JadwalKerjaPraktek
  ***********************************************************************/
 
+import connect.connect;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /** @pdOid 69ed8077-8547-41c2-bfc5-6ca35ace8d3e */
@@ -23,6 +27,13 @@ public class JadwalKerjaPraktek {
    /** @pdOid 95a071b7-7934-43db-8525-cecb1adca784 */
    public JadwalKerjaPraktek() {
       // TODO: implement
+   }
+   
+   public JadwalKerjaPraktek(Date mulai, Date akhir, String idProdi) {
+      // TODO: implement
+      setmulai(mulai);
+      setakhir(akhir);
+      prodi = new Prodi().satuDB(idProdi);
    }
    
    /** @pdOid 29fb26ab-d8a3-4d91-aa61-973f68dfdb9f */
@@ -58,4 +69,67 @@ public class JadwalKerjaPraktek {
       akhir = newAkhir;
    }
 
+   public JadwalKerjaPraktek satuDB(int idJadwal){
+       JadwalKerjaPraktek jkp = new JadwalKerjaPraktek();
+       String query = "SELECT * FROM jadwalkerjapraktek WHERE idJadwal = (?)";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, idJadwal);
+           ResultSet rs = statement.executeQuery();
+           
+           if(rs.next()){
+               jkp.setidJadwal(rs.getInt("idJadwal"));
+               jkp.prodi = new Prodi().satuDB(rs.getString("idProdi"));
+               jkp.setmulai(rs.getDate("mulai"));
+               jkp.setakhir(rs.getDate("akhir"));
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return jkp;
+   }
+   
+   public ArrayList<JadwalKerjaPraktek> semuaDB(){
+       ArrayList<JadwalKerjaPraktek> list = new ArrayList<>();
+       String query = "SELECT * FROM jadwalkerjapraktek";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           ResultSet rs = statement.executeQuery();
+           while(rs.next()){
+               JadwalKerjaPraktek jkp = new JadwalKerjaPraktek();
+               jkp.setidJadwal(rs.getInt("idJadwal"));
+               jkp.prodi = new Prodi().satuDB(rs.getString("idProdi"));
+               jkp.setmulai(rs.getDate("mulai"));
+               jkp.setakhir(rs.getDate("akhir"));
+               list.add(jkp);
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return list;
+   }
+   
+   public void masukDB(){
+       try{
+           String query = "INSERT INTO jadwalkerjapraktek VALUES (?, ?, ?, ?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setInt(1, getidJadwal());
+           statement.setString(2, prodi.getidProdi());
+           java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
+           statement.setDate(3, sqlDate);
+           sqlDate = new java.sql.Date(getakhir().getTime());
+           statement.setDate(4, sqlDate);
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
 }

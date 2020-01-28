@@ -95,10 +95,17 @@ public class Dosen extends Manusia {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO prodi VALUES (?, ?)";
+           String query = "INSERT INTO dosen VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setString(1, getidProdi());
-           statement.setString(2, getnamaProdi());
+           statement.setString(1, getnidn());
+           statement.setString(2, getnama());
+           statement.setString(3, getnik());
+           statement.setString(4, getagama());
+           statement.setString(5, getjenisKelamin());
+           statement.setString(6, getemail());
+           java.sql.Date sqlDate = new java.sql.Date(gettanggalLahir().getTime());
+           statement.setDate(7, sqlDate);
+           statement.setString(8, getalamat());
            
            statement.execute();
            statement.close();
