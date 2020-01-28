@@ -27,9 +27,9 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="561" max="-2" attributes="0"/>
-                  <Component id="nidnLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="nidnLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="konfirmCheckbox" min="-2" max="-2" attributes="0"/>
-                  <Component id="namaDosenLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="namaDosenLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="mahasiswaLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -51,9 +51,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-              <Component id="nidnLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="nidnLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Component id="namaDosenLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="namaDosenLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nimNamaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,12 +74,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="nidnLabel">
+    <Component class="javax.swing.JLabel" name="nidnLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="NIDN                            : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="namaDosenLabel">
+    <Component class="javax.swing.JLabel" name="namaDosenLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nama Dosen                : "/>
       </Properties>
