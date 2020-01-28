@@ -373,7 +373,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getUser().setusername(idTextField.getText());
                 getUser().setpassword(kataSandiTextField.getText());
                 getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
-                getUser().insertToDatabase();
+                getUser().masukDB();
 
                 getMahasiswa().setnim(idTextField.getText());
 
@@ -395,7 +395,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getMahasiswa().setemail(emailTextField.getText());
                 getMahasiswa().setagama(agamaComboBox.getSelectedItem().toString());
 
-                getMahasiswa().insertToDatabase();
+                getMahasiswa().masukDB();
                 break;
             }
 
@@ -404,7 +404,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getUser().setusername(idTextField.getText());
                 getUser().setpassword(kataSandiTextField.getText());
                 getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
-                getUser().insertToDatabase();
+                getUser().masukDB();
 
                 getDosen().setnidn(idTextField.getText());
                 getDosen().setnama(namaTextField.getText());
@@ -415,7 +415,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getDosen().setemail(emailTextField.getText());
                 getDosen().setagama(agamaComboBox.getSelectedItem().toString());
 
-                getDosen().insertToDatabase();
+                getDosen().masukDB();
                 break;
             }
 
@@ -424,12 +424,12 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getUser().setusername(idTextField.getText());
                 getUser().setpassword(kataSandiTextField.getText());
                 getUser().settipeUser(opsiComboBox.getSelectedItem().toString());
-                getUser().insertToDatabase();
+                getUser().masukDB();
 
                 getProdi().setidProdi(idTextField.getText());
                 getProdi().setnamaProdi(namaTextField.getText());
 
-                getProdi().insertToDatabase();
+                getProdi().masukDB();
                 break;
             }
         }
@@ -528,7 +528,7 @@ public class FrameAdmin extends javax.swing.JFrame {
             }
             case "Prodi" :
             {
-                setUser(new User().getSingleDatabase(idTextField.getText()));
+                setUser(new User().satuDB(idTextField.getText()));
                 setProdi(new Prodi().satuDB(idTextField.getText()));
                 if ((getProdi().getnamaProdi() == null) || (getProdi().getnamaProdi() == "") || (getProdi().getnamaProdi() == "id")){
                     hideShowAll(false);

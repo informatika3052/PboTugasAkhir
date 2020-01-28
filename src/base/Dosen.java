@@ -41,7 +41,7 @@ public class Dosen extends Manusia {
 
    public Dosen satuDB(String nidn){
        Dosen dos = new Dosen();
-       String query = "SELECT * FROM dosen WHERE nidn = (?)";
+       String query = "SELECT * FROM Dosen WHERE nidn = (?)";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, nidn);
@@ -68,7 +68,7 @@ public class Dosen extends Manusia {
    
    public ArrayList<Dosen> semuaDB(){
        ArrayList<Dosen> list = new ArrayList<>();
-       String query = "SELECT * FROM dosen";
+       String query = "SELECT * FROM Dosen";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            ResultSet rs = statement.executeQuery();
@@ -95,7 +95,7 @@ public class Dosen extends Manusia {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO dosen VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = "INSERT INTO Dosen VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnidn());
            statement.setString(2, getnama());
@@ -116,7 +116,7 @@ public class Dosen extends Manusia {
    }
    public void updateDB(){
        try{
-           String query = "UPDATE dosen SET nidn = (?), nama = (?), nik = (?), agama = (?),"
+           String query = "UPDATE Dosen SET nidn = (?), nama = (?), nik = (?), agama = (?),"
                    + " jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nim"
                    + " = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);

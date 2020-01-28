@@ -76,7 +76,7 @@ public class Mahasiswa extends Manusia {
    
    public ArrayList<Mahasiswa> semuaDB(){
        ArrayList<Mahasiswa> list = new ArrayList<>();
-       String query = "SELECT * FROM mahasiswa";
+       String query = "SELECT * FROM Mahasiswa";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            ResultSet rs = statement.executeQuery();
@@ -105,7 +105,7 @@ public class Mahasiswa extends Manusia {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO mahasiswa VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = "INSERT INTO Mahasiswa VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnim());
            statement.setString(2, prodi.getidProdi());
@@ -128,7 +128,7 @@ public class Mahasiswa extends Manusia {
    }
    public void updateDB(){
        try{
-           String query = "UPDATE dosen SET nim = (?), idProdi = (?), nidn = (?), nama = (?),"
+           String query = "UPDATE Mahasiswa SET nim = (?), idProdi = (?), nidn = (?), nama = (?),"
                    + " nik = (?), agama = (?), jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nim"
                    + " = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
