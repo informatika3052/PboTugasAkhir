@@ -82,9 +82,10 @@ public class KerjaPraktek {
            
            if(rs.next()){
                kp.setidKp(rs.getInt("idKp"));
-               jkp.prodi = new Prodi().satuDB(rs.getString("idProdi"));
-               jkp.setmulai(rs.getDate("mulai"));
-               jkp.setakhir(rs.getDate("akhir"));
+	       kp.mahasiswa = new Mahasiswa().satuDB(rs.getString("nim"));
+               kp.jadwalKerjaPraktek = new JadwalKerjaPraktek().satuDB(rs.getInt("idJadwal"));
+               kp.jadwalKerjaPraktek.setmulai(rs.getDate("mulai"));
+               kp.jadwalKerjaPraktek.setakhir(rs.getDate("akhir"));
            }
            statement.close();
            rs.close();
@@ -92,7 +93,7 @@ public class KerjaPraktek {
        catch(SQLException e){
            
        }
-       return jkp;
+       return kp;
    }
    
    public ArrayList<JadwalKerjaPraktek> semuaDB(){
@@ -120,14 +121,13 @@ public class KerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO jadwalkerjapraktek VALUES (?, ?, ?, ?)";
+           String query = "INSERT INTO jadwalkerjapraktek VALUES (null, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setInt(1, getidJadwal());
-           statement.setString(2, prodi.getidProdi());
-           java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
-           statement.setDate(3, sqlDate);
-           sqlDate = new java.sql.Date(getakhir().getTime());
-           statement.setDate(4, sqlDate);
+           statement.setString(1, mahasiswa.getnim());
+	   statement.setInt(2, jadwalKerjaPraktek.getidJadwal());
+           statement.setString(3, getnamaKegiatan());
+           statement.setString(4, getinstansi());
+	   
            statement.execute();
            statement.close();
        }
