@@ -31,8 +31,8 @@ public class FrameProdi extends javax.swing.JFrame {
         setUser(user);
         setDosen(new Dosen().satuDB(user.getusername()));
         initComponents();
-        nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
-        namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
+       // nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
+        //namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
     }
      public void setComboBox()
      {

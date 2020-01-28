@@ -6,9 +6,13 @@
 package gui;
 
 import base.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +22,7 @@ public class FrameDoswal extends javax.swing.JFrame {
     private User user = new User();
     private Dosen dosen = new Dosen();
     private Mahasiswa mahasiswa = new Mahasiswa();
+    private KerjaPraktek kerjaPraktek = new KerjaPraktek();
     private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
     private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
     private Bimbingan bimbingan = new Bimbingan();
@@ -49,139 +54,150 @@ public class FrameDoswal extends javax.swing.JFrame {
 		}
 	}
      }
+     public void KerjaPraktekDB(){
+        setKerjaPraktek(new KerjaPraktek());
+        getKerjaPraktek().setidKp(WIDTH);
+        getKerjaPraktek().setnamaKegiatan("");
+        getKerjaPraktek().setinstansi("");
+       
+     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        nidnLabel1 = new javax.swing.JLabel();
-        namaDosenLabel1 = new javax.swing.JLabel();
-        mahasiswaLabel = new javax.swing.JLabel();
-        nimNamaComboBox = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        konfirmCheckbox = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+                nidnLabel1 = new javax.swing.JLabel();
+                namaDosenLabel1 = new javax.swing.JLabel();
+                mahasiswaLabel = new javax.swing.JLabel();
+                nimNamaComboBox = new javax.swing.JComboBox<>();
+                jScrollPane1 = new javax.swing.JScrollPane();
+                tabelKP1 = new javax.swing.JTable();
+                konfirmCheckbox1 = new javax.swing.JCheckBox();
+                jButton1 = new javax.swing.JButton();
+                exitDos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nidnLabel1.setText("NIDN                            : ");
+                nidnLabel1.setText("NIDN                            : ");
 
-        namaDosenLabel1.setText("Nama Dosen                : ");
+                namaDosenLabel1.setText("Nama Dosen                : ");
 
-        mahasiswaLabel.setText("Nama Mahasiswa        : ");
+                mahasiswaLabel.setText("Nama Mahasiswa        : ");
 
-        nimNamaComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nimNamaComboBoxActionPerformed(evt);
-            }
-        });
+                nimNamaComboBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                nimNamaComboBoxActionPerformed(evt);
+                        }
+                });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                tabelKP1.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
 
-            },
-            new String [] {
-                "Instansi KP", "Kegiatan KP"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class
-            };
+                        },
+                        new String [] {
+                                "Instansi KP", "Kegiatan KP"
+                        }
+                ) {
+                        Class[] types = new Class [] {
+                                java.lang.String.class, java.lang.Object.class
+                        };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+                        public Class getColumnClass(int columnIndex) {
+                                return types [columnIndex];
+                        }
+                });
+                jScrollPane1.setViewportView(tabelKP1);
 
-        konfirmCheckbox.setText("Setujui KP");
-        konfirmCheckbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                konfirmCheckboxActionPerformed(evt);
-            }
-        });
+                konfirmCheckbox1.setText("Setujui KP");
+                konfirmCheckbox1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                konfirmCheckbox1ActionPerformed(evt);
+                        }
+                });
 
-        jButton1.setText("SIMPAN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+                jButton1.setText("SIMPAN");
+                jButton1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButton1ActionPerformed(evt);
+                        }
+                });
 
-        jButton2.setText("LOGOUT");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+                exitDos.setText("LOGOUT");
+                exitDos.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                exitDosActionPerformed(evt);
+                        }
+                });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nidnLabel1)
-                    .addComponent(konfirmCheckbox)
-                    .addComponent(namaDosenLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(mahasiswaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nimNamaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(nidnLabel1)
-                .addGap(6, 6, 6)
-                .addComponent(namaDosenLabel1)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nimNamaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mahasiswaLabel))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(konfirmCheckbox)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(51, 51, 51))
-        );
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nidnLabel1)
+                                        .addComponent(konfirmCheckbox1)
+                                        .addComponent(namaDosenLabel1)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(mahasiswaLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(nimNamaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(exitDos)
+                                .addContainerGap())
+                );
+                layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addComponent(nidnLabel1)
+                                .addGap(6, 6, 6)
+                                .addComponent(namaDosenLabel1)
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(nimNamaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(mahasiswaLabel))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addComponent(konfirmCheckbox1)
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton1)
+                                        .addComponent(exitDos))
+                                .addGap(51, 51, 51))
+                );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+                pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void nimNamaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimNamaComboBoxActionPerformed
-        
+        KerjaPraktekDB();
     }//GEN-LAST:event_nimNamaComboBoxActionPerformed
 
-    private void konfirmCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konfirmCheckboxActionPerformed
-        // TODO add your handling code here:
-        if(konfirmCheckbox.isSelected()){
+    private void konfirmCheckbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konfirmCheckbox1ActionPerformed
+         if(konfirmCheckbox1.isSelected()){
+                 PersetujuanDosen perDos = new PersetujuanDosen(getKerjaPraktek().getidKp() , true);
+            perDos.masukDB();
         }
         else{
+		 PersetujuanDosen perDos = new PersetujuanDosen(getKerjaPraktek().getidKp() , false);
+            perDos.masukDB();
+ 
         }
-    }//GEN-LAST:event_konfirmCheckboxActionPerformed
+    }//GEN-LAST:event_konfirmCheckbox1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new login_user().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void exitDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitDosActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitDosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null,"data tersimpan");
+        JOptionPane.showMessageDialog(null,"Data Tersimpan");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -219,18 +235,38 @@ public class FrameDoswal extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JCheckBox konfirmCheckbox;
-    private javax.swing.JLabel mahasiswaLabel;
-    private javax.swing.JLabel namaDosenLabel1;
-    private javax.swing.JLabel nidnLabel1;
-    private javax.swing.JComboBox<String> nimNamaComboBox;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton exitDos;
+        private javax.swing.JButton jButton1;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JCheckBox konfirmCheckbox1;
+        private javax.swing.JLabel mahasiswaLabel;
+        private javax.swing.JLabel namaDosenLabel1;
+        private javax.swing.JLabel nidnLabel1;
+        private javax.swing.JComboBox<String> nimNamaComboBox;
+        private javax.swing.JTable tabelKP1;
+        // End of variables declaration//GEN-END:variables
 
+    public void getPersetujuanFromDatabase(int idJadwal){
+        DefaultTableModel modelTablePersetujuan = (DefaultTableModel) tabelKP1.getModel();
+        modelTablePersetujuan.setRowCount(0);
+        Object[] atributKerjaPraktek = new Object[2];
+        try {
+            ArrayList PersetujuanDosenAll = new KerjaPraktek().semuaDB(idJadwal);
+            Iterator listRevisi = PersetujuanDosenAll.iterator();
+            while(listRevisi.hasNext()){
+                KerjaPraktek eachKerjaPraktek;
+                eachKerjaPraktek = (KerjaPraktek) listRevisi.next();
+                atributKerjaPraktek[0] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.getinstansi();
+                atributKerjaPraktek[1] = new SimpleDateFormat("dd-MM-yyyy").format(eachKerjaPraktek.getnamaKegiatan());
+        
+                modelTablePersetujuan.addRow(atributKerjaPraktek);
+            }
+            tabelKP1.setModel(modelTablePersetujuan);
+        } catch (Exception ex) {
+            Logger.getLogger(FrameDoswal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public User getUser() {
         return user;
     }
@@ -242,6 +278,12 @@ public class FrameDoswal extends javax.swing.JFrame {
     }
     public void setDosen(Dosen dosen) {
         this.dosen = dosen;
+    }
+    public KerjaPraktek getKerjaPraktek() {
+        return kerjaPraktek;
+    }
+    public void setKerjaPraktek(KerjaPraktek kerjaPraktek) {
+        this.kerjaPraktek = kerjaPraktek;
     }
     public Mahasiswa getMahasiswa() {
         return mahasiswa;
