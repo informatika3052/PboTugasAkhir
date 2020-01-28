@@ -60,6 +60,7 @@ public class User {
       tipeUser = newTipeUser;
    }
 
+<<<<<<< HEAD
    public User satuDB(String key){
        User user = new User();
        try{
@@ -136,3 +137,6 @@ public boolean cekLogin(String username, String pass){
        }
    }
 }
+=======
+ }
+>>>>>>> 3e8e4e2769c5f1e64fcb4e931279262ae1b832b8

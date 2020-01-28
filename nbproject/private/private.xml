@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/Mahasiswa.java</file>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/Prodi.java</file>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/PersetujuanProdi.java</file>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/Bimbingan.java</file>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/Dosen.java</file>
-            <file>file:/C:/Users/Ajeng/Documents/GitHub/PboTugasAkhir/src/base/Manusia.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/Bimbingan.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/KerjaPraktek.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/Manusia.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/Prodi.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/connect/connect.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/User.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/Mahasiswa.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/JadwalKerjaPraktek.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/Dosen.java</file>
         </group>
     </open-files>
 </project-private>
