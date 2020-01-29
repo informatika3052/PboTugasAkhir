@@ -32,6 +32,7 @@ public class FrameDoswal extends javax.swing.JFrame {
      */
     public FrameDoswal() {
         initComponents();
+	setComboBox();
     }
      public FrameDoswal(User user) {
         super("Dosen : " + (new Dosen().satuDB(user.getusername())).getnama());

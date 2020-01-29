@@ -33,7 +33,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         initComponents();
     }
     public FrameAdmin(User Admin) {
-    //    super("Admin : " + Admin.getUsername());
+        super("Admin : " + Admin.getusername());
         setAdmin(Admin);
         initComponents();
         hideShowId(false);
@@ -77,7 +77,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         
         while(tiapList.hasNext()){
             Dosen d = tiapList.next();
-//            dsnComboBox.addItem(d.getNama());
+            dsnComboBox.addItem(d.getnama());
         }  
     }
     
@@ -86,7 +86,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         
         while(tiapList.hasNext()){
             Prodi p = tiapList.next();
-  //          prodiComboBox.addItem(p.getNamaProdi());
+            prodiComboBox.addItem(p.getnamaProdi());
         }  
     }
     
@@ -95,8 +95,8 @@ public class FrameAdmin extends javax.swing.JFrame {
         prodiComboBox.addItem("-Jurusan-");
         dsnComboBox.removeAllItems();
         dsnComboBox.addItem("-Dosen Pembimbing-");
-//        setProdiCombox(getProdi().getAllDatabase(""));
-//        setDosenCombox(getDosen().getAllDatabase(""));
+     setProdiCombox(getProdi().semuaDB());
+     setDosenCombox(getDosen().semuaDB());
     }
     
     public void setDefaultTeksField(){
@@ -268,7 +268,7 @@ public class FrameAdmin extends javax.swing.JFrame {
 
     private void opsiComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiComboBoxActionPerformed
         // TODO add your handling code here:
-        hideShowAll(false);
+        hideShowAll(true);
         setComboxAll();
         switch (opsiComboBox.getSelectedItem().toString()){
             case "-- pilih --" :
@@ -307,7 +307,7 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getMahasiswa().prodi = null;
                 if(dsnComboBox.getSelectedIndex() != 0)
                 {
-                  //  getMahasiswa().DosenPembimbingMahasiswa = new Dosen().getSingleNamaDatabase(dsnComboBox.getSelectedItem().toString());
+                    getMahasiswa().dosen = new Dosen().satuDB(dsnComboBox.getSelectedItem().toString());
                 }
 
                 if(prodiComboBox.getSelectedIndex() != 0)
@@ -587,6 +587,7 @@ public class FrameAdmin extends javax.swing.JFrame {
             }
         });
     }
+    
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JRadioButton LRadioButton;
