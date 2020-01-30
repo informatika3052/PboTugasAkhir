@@ -143,26 +143,4 @@ public class Prodi {
            
        }
    }
-
-
-  public Prodi SatuNamaDB(String kunci){
-       Prodi pro = new Prodi();
-       String query = "SELECT * FROM prodi WHERE namaProdi = (?)";
-       try{
-           PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setString(1, kunci);
-           ResultSet rs = statement.executeQuery();
-           if(rs.next()){
-               pro.setidProdi(rs.getString("idProdi"));
-               pro.setnamaProdi(rs.getString("namaProdi"));
-               
-	   }
-           statement.close();
-           rs.close();
-       }
-       catch(SQLException e){
-           
-       }
-       return pro;
-   }
 }
