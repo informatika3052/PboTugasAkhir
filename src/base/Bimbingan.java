@@ -61,7 +61,7 @@ public class Bimbingan {
        String query = "SELECT * FROM bimbingan WHERE idBimbing = (?)";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setInt(1, getidBimbing());
+           statement.setInt(1, idBimbing);
            ResultSet rs = statement.executeQuery();
            
            if(rs.next()){
@@ -94,6 +94,7 @@ public class Bimbingan {
                bim.dosen = new Dosen().satuDB(rs.getString("nidn"));
                bim.setaccPembimbing(rs.getString("accPembimbing"));
                
+               list.add(bim);
            }
            statement.close();
            rs.close();
@@ -122,13 +123,13 @@ public class Bimbingan {
    }
    public void updateDB(){
        try{
-           String query = "UPDATE Bimbingan SET idBimbing= (?), idAccProdi = (?), nidn = (?), accPembimbing = (?)";
+           String query = "UPDATE Bimbingan SET idAccProdi = (?), nidn = (?), accPembimbing = (?) WHERE idBimbing = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            
-           statement.setInt(1, getidBimbing());
-           statement.setInt(2, persetujuanProdi.getidAccProdi());
-           statement.setString(3, dosen.getnidn());
-           statement.setString(4, getaccPembimbing());
+           statement.setInt(1, persetujuanProdi.getidAccProdi());
+           statement.setString(2, dosen.getnidn());
+           statement.setString(3, getaccPembimbing());
+           statement.setInt(4, getidBimbing());
            
            statement.execute();
            statement.close();
