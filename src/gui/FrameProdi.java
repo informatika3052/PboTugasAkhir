@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class FrameProdi extends javax.swing.JFrame {
     private User user = new User();
-    private Dosen dosen = new Dosen();
+    private Prodi prodi = new Prodi();
     private Mahasiswa mahasiswa = new Mahasiswa();
     private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
     private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
@@ -27,9 +27,9 @@ public class FrameProdi extends javax.swing.JFrame {
     }
 
     public FrameProdi(User user) {
-        super("Dosen : " + (new Dosen().satuDB(user.getusername())).getnama());
+        super("Prodi : " + (new Prodi().satuDB(user.getusername())).getnamaProdi());
         setUser(user);
-        setDosen(new Dosen().satuDB(user.getusername()));
+        
         initComponents();
        // nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
         //namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
@@ -285,11 +285,11 @@ public User getUser() {
     public void setUser(User user) {
         this.user = user;
     }
-    public Dosen getDosen() {
-        return dosen;
+    public Prodi getProdi() {
+        return prodi;
     }
-    public void setDosen(Dosen dosen) {
-        this.dosen = dosen;
+    public void setProdi(Prodi prodi) {
+        this.prodi = prodi;
     }
     public Mahasiswa getMahasiswa() {
         return mahasiswa;

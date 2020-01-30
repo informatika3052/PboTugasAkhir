@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /** @pdOid 11645a66-e67f-4777-b358-9ed77286b806 */
 public class Mahasiswa extends Manusia {
@@ -141,7 +142,7 @@ public class Mahasiswa extends Manusia {
    public void updateDB(){
        try{
            String query = "UPDATE Mahasiswa SET idProdi = (?), nidn = (?), nama = (?),"
-                   + " nik = (?), agama = (?), jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nim"
+                   + " nik = (?), agama = (?), jenisKelamin = (?), email = (?), tanggalLahir = (?), alamat = (?) WHERE nim"
                    + " = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            
@@ -151,7 +152,7 @@ public class Mahasiswa extends Manusia {
            statement.setString(3, getnama());
            statement.setString(4, getnik());
            statement.setString(5, getagama());          
-           statement.setString(6, ""+getjenisKelamin());
+           statement.setString(6, getjenisKelamin());
            statement.setString(7, getemail());
            java.sql.Date sqlDate = new java.sql.Date(gettanggalLahir().getTime());
            statement.setDate(8, sqlDate);
@@ -162,7 +163,7 @@ public class Mahasiswa extends Manusia {
            statement.close();
        }
        catch(SQLException e){
-           
+           JOptionPane.showMessageDialog(null, e);
        }
    }
 }
