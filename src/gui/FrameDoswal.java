@@ -253,7 +253,7 @@ public class FrameDoswal extends javax.swing.JFrame {
         modelTablePersetujuan.setRowCount(0);
         Object[] atributKerjaPraktek = new Object[2];
         try {
-            ArrayList PersetujuanDosenAll = new KerjaPraktek().semuaDB(idJadwal);
+            ArrayList PersetujuanDosenAll = new KerjaPraktek().semuaDB();
             Iterator listRevisi = PersetujuanDosenAll.iterator();
             while(listRevisi.hasNext()){
                 KerjaPraktek eachKerjaPraktek;

@@ -96,7 +96,7 @@ public class KerjaPraktek {
        return kp;
    }
    
-   public ArrayList<JadwalKerjaPraktek> semuaDB(int idJadwal){
+   public ArrayList<JadwalKerjaPraktek> semuaDB(){
        ArrayList<JadwalKerjaPraktek> list = new ArrayList<>();
        String query = "SELECT * FROM jadwalkerjapraktek";
        try{

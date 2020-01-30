@@ -115,14 +115,14 @@ public class Mahasiswa extends Manusia {
 		   + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnim());
-	       if (prodi != null ) 
-		       statement.setString(2, prodi.getidProdi());
+           if (prodi != null )
+               statement.setString(2, prodi.getidProdi());
            else
-		statement.setString(2, null);
-	       if (dosen != null) 
-		       statement.setString(3, dosen.getnidn());
-		       else  
-	       statement.setString(3, null);      
+               statement.setString(2, null);
+           if (dosen != null)
+               statement.setString(3, dosen.getnidn());
+           else
+               statement.setString(3, null);      
            statement.setString(4, getnama());
            statement.setString(5, getnik());
            statement.setString(6, getagama());
@@ -141,22 +141,23 @@ public class Mahasiswa extends Manusia {
    }
    public void updateDB(){
        try{
-           String query = "UPDATE Mahasiswa SET nim = (?), idProdi = (?), nidn = (?), nama = (?),"
+           String query = "UPDATE Mahasiswa SET idProdi = (?), nidn = (?), nama = (?),"
                    + " nik = (?), agama = (?), jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nim"
                    + " = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            
-           statement.setString(1, getnim());
-           statement.setString(2, prodi.getidProdi());
-           statement.setString(3, dosen.getnidn());
-           statement.setString(4, getnama());
-           statement.setString(5, getnik());
-           statement.setString(6, getagama());          
-           statement.setString(7, ""+getjenisKelamin());
-           statement.setString(8, getemail());
+           
+           statement.setString(1, prodi.getidProdi());
+           statement.setString(2, dosen.getnidn());
+           statement.setString(3, getnama());
+           statement.setString(4, getnik());
+           statement.setString(5, getagama());          
+           statement.setString(6, ""+getjenisKelamin());
+           statement.setString(7, getemail());
            java.sql.Date sqlDate = new java.sql.Date(gettanggalLahir().getTime());
-           statement.setDate(9, sqlDate);
-           statement.setString(10, getalamat());
+           statement.setDate(8, sqlDate);
+           statement.setString(9, getalamat());
+           statement.setString(10, getnim());
            
            statement.execute();
            statement.close();
@@ -165,8 +166,4 @@ public class Mahasiswa extends Manusia {
            
        }
    }
-
-    public Mahasiswa getsatuDB(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
