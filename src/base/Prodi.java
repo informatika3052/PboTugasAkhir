@@ -125,34 +125,25 @@ public class Prodi {
        }
    }
 
+
+  public Prodi SatuNamaDB(String kunci){
+       Prodi pro = new Prodi();
+       String query = "SELECT * FROM prodi WHERE namaProdi = (?)";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, kunci);
+           ResultSet rs = statement.executeQuery();
+           if(rs.next()){
+               pro.setidProdi(rs.getString("idProdi"));
+               pro.setnamaProdi(rs.getString("namaProdi"));
+               
+	   }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return pro;
+   }
 }
-//
-//public ArrayList<Dosen> semuaDB(String query){
-//       ArrayList<Dosen> list = new ArrayList<>();
-//       try{
-//           if(query.equals(""))
-//               query = "SELECT * FROM dosen";
-//           
-//           PreparedStatement statement = connect.getConnection().prepareStatement(query);
-//           ResultSet rs = statement.executeQuery();
-//           while(rs.next()){
-//               Dosen dos = new Dosen();
-//               dos.setnidn(rs.getString("nidn"));
-//               dos.setnama(rs.getString("nama"));
-//               dos.setnik(rs.getString("nik"));
-//	       dos.setagama(rs.getString("agama"));
-//	       dos.setjenisKelamin(rs.getString("jenisKelamin"));
-//               dos.setemail(rs.getString("email"));
-//	       dos.settanggalLahir(rs.getDate("tanggalLahir"));
-//	       dos.setalamat(rs.getString("alamat"));
-//               
-//	       list.add(dos);
-//           }
-//           statement.close();
-//           rs.close();
-//       }
-//       catch(SQLException e){
-//           
-//       }
-//       return list;
-//   }

@@ -45,7 +45,7 @@ public class FrameDoswal extends javax.swing.JFrame {
     }
      public void setComboBox()
      {
-        ArrayList<Mahasiswa> list = new Mahasiswa ().semuaDB();
+        ArrayList<Mahasiswa> list = new Mahasiswa().semuaDB();
 	Iterator<Mahasiswa> tiaplist = list.iterator();
 	nimNamaComboBox.removeAllItems();
 	while(tiaplist.hasNext()){
