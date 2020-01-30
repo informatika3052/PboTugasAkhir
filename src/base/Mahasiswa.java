@@ -111,8 +111,7 @@ public class Mahasiswa extends Manusia {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO mahasiswa(nim,idProdi,nidn,nama,nik,agama,jenisKelamin,email,tanggalLahir,alamat)"
-		   + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = "INSERT INTO mahasiswa VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnim());
 	       if (prodi != null ) 

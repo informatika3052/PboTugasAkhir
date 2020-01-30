@@ -381,12 +381,12 @@ public class FrameAdmin extends javax.swing.JFrame {
                 
                 if(dsnComboBox.getSelectedIndex() != 0)
                 {
-                    getMahasiswa().dosen = new Dosen().satuDB(dsnComboBox.getSelectedItem().toString());
+                    getMahasiswa().dosen = new Dosen().SatuNamaDB(dsnComboBox.getSelectedItem().toString());
                 }
 
                 if(prodiComboBox.getSelectedIndex() != 0)
                 {
-                    getMahasiswa().prodi = new Prodi().satuDB(prodiComboBox.getSelectedItem().toString());
+                    getMahasiswa().prodi = new Prodi().SatuNamaDB(prodiComboBox.getSelectedItem().toString());
                 }
 
                 getMahasiswa().setnama(namaTextField.getText());

@@ -45,7 +45,7 @@ public class FrameDoswal extends javax.swing.JFrame {
     }
      public void setComboBox()
      {
-        ArrayList<Mahasiswa> list = new Mahasiswa ().semuaDB();
+        ArrayList<Mahasiswa> list = new Mahasiswa().semuaDB();
 	Iterator<Mahasiswa> tiaplist = list.iterator();
 	nimNamaComboBox.removeAllItems();
 	while(tiaplist.hasNext()){
@@ -55,6 +55,7 @@ public class FrameDoswal extends javax.swing.JFrame {
 		}
 	}
      }
+     
      public void KerjaPraktekDB(){
         setKerjaPraktek(new KerjaPraktek());
         //getKerjaPraktek().setidKp().toString();
