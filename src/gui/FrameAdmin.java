@@ -94,9 +94,10 @@ public class FrameAdmin extends javax.swing.JFrame {
         prodiComboBox.removeAllItems();
         prodiComboBox.addItem("-Jurusan-");
         dsnComboBox.removeAllItems();
-        dsnComboBox.addItem("-Dosen Pembimbing-");
-     setProdiCombox(getProdi().semuaDB());
+        dsnComboBox.addItem("-Pilih Dosen Wali-");
+	
      setDosenCombox(getDosen().semuaDB());
+     setProdiCombox(getProdi().semuaDB());
     }
     
     public void setDefaultTeksField(){
@@ -268,7 +269,7 @@ public class FrameAdmin extends javax.swing.JFrame {
 
     private void opsiComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiComboBoxActionPerformed
         // TODO add your handling code here:
-        hideShowAll(true);
+        hideShowAll(false);
         setComboxAll();
         switch (opsiComboBox.getSelectedItem().toString()){
             case "-- pilih --" :
@@ -376,7 +377,8 @@ public class FrameAdmin extends javax.swing.JFrame {
                 getUser().masukDB();
 
                 getMahasiswa().setnim(idTextField.getText());
-
+		
+                
                 if(dsnComboBox.getSelectedIndex() != 0)
                 {
                     getMahasiswa().dosen = new Dosen().satuDB(dsnComboBox.getSelectedItem().toString());
@@ -620,7 +622,7 @@ public class FrameAdmin extends javax.swing.JFrame {
         private javax.swing.JLabel tglLahirLabel;
         private javax.swing.JButton updateButton;
         // End of variables declaration//GEN-END:variables
- public User getUser() {
+    public User getUser() {
         return user;
     }
 

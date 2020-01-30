@@ -54,12 +54,18 @@ public class Mahasiswa extends Manusia {
            ResultSet rs = statement.executeQuery();
            
            if(rs.next()){
+		   
                mah.setnim(rs.getString("nim"));
-               mah.prodi = new Prodi().satuDB(rs.getString("idProdi"));
-               mah.dosen = new Dosen().satuDB(rs.getString("nidn"));
-               mah.setnama(rs.getString("nama"));
+               if (rs.getString("idProdi") !=null){
+                   mah.prodi = new Prodi().satuDB(rs.getString("idProdi"));
+               }
+	       if (rs.getString("nidn") != null){
+                   mah.dosen = new Dosen().satuDB(rs.getString("nidn"));
+               }
+               
+	       mah.setnama(rs.getString("nama"));
                mah.setnik(rs.getString("nik"));
-               mah.setagama(rs.getString("agama:"));
+               mah.setagama(rs.getString("agama"));
                mah.setjenisKelamin(rs.getString("jenisKelamin"));
                mah.setemail(rs.getString("email"));
                mah.settanggalLahir(rs.getDate("tanggalLahir"));
@@ -76,7 +82,7 @@ public class Mahasiswa extends Manusia {
    
    public ArrayList<Mahasiswa> semuaDB(){
        ArrayList<Mahasiswa> list = new ArrayList<>();
-       String query = "SELECT * FROM Mahasiswa";
+       String query = "SELECT * FROM mahasiswa";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            ResultSet rs = statement.executeQuery();
@@ -87,7 +93,7 @@ public class Mahasiswa extends Manusia {
                mah.dosen = new Dosen().satuDB(rs.getString("nidn"));
                mah.setnama(rs.getString("nama"));
                mah.setnik(rs.getString("nik"));
-               mah.setagama(rs.getString("agama:"));
+               mah.setagama(rs.getString("agama"));
                mah.setjenisKelamin(rs.getString("jenisKelamin"));
                mah.setemail(rs.getString("email"));
                mah.settanggalLahir(rs.getDate("tanggalLahir"));
@@ -105,11 +111,18 @@ public class Mahasiswa extends Manusia {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO Mahasiswa VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = "INSERT INTO mahasiswa(nim,idProdi,nidn,nama,nik,agama,jenisKelamin,email,tanggalLahir,alamat)"
+		   + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnim());
-           statement.setString(2, prodi.getidProdi());
-           statement.setString(3, dosen.getnidn());
+	       if (prodi != null ) 
+		       statement.setString(2, prodi.getidProdi());
+           else
+		statement.setString(2, null);
+	       if (dosen != null) 
+		       statement.setString(3, dosen.getnidn());
+		       else  
+	       statement.setString(3, null);      
            statement.setString(4, getnama());
            statement.setString(5, getnik());
            statement.setString(6, getagama());

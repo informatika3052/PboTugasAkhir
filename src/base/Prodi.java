@@ -70,7 +70,10 @@ public class Prodi {
        }
        return pro;
    }
-   
+//   public static String prodi;
+//   public String ambilprodi(){
+//	   return prodi;
+//   }
    public ArrayList<Prodi> semuaDB(){
        ArrayList<Prodi> list = new ArrayList<>();
        String query = "SELECT * FROM prodi";
@@ -82,6 +85,7 @@ public class Prodi {
                pro.setidProdi(rs.getString("idProdi"));
                pro.setnamaProdi(rs.getString("namaProdi"));
                list.add(pro);
+//	       prodi = rs.getString("idProdi");
            }
            statement.close();
            rs.close();
@@ -122,3 +126,33 @@ public class Prodi {
    }
 
 }
+//
+//public ArrayList<Dosen> semuaDB(String query){
+//       ArrayList<Dosen> list = new ArrayList<>();
+//       try{
+//           if(query.equals(""))
+//               query = "SELECT * FROM dosen";
+//           
+//           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+//           ResultSet rs = statement.executeQuery();
+//           while(rs.next()){
+//               Dosen dos = new Dosen();
+//               dos.setnidn(rs.getString("nidn"));
+//               dos.setnama(rs.getString("nama"));
+//               dos.setnik(rs.getString("nik"));
+//	       dos.setagama(rs.getString("agama"));
+//	       dos.setjenisKelamin(rs.getString("jenisKelamin"));
+//               dos.setemail(rs.getString("email"));
+//	       dos.settanggalLahir(rs.getDate("tanggalLahir"));
+//	       dos.setalamat(rs.getString("alamat"));
+//               
+//	       list.add(dos);
+//           }
+//           statement.close();
+//           rs.close();
+//       }
+//       catch(SQLException e){
+//           
+//       }
+//       return list;
+//   }

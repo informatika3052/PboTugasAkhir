@@ -41,7 +41,7 @@ public class Dosen extends Manusia {
 
    public Dosen satuDB(String nidn){
        Dosen dos = new Dosen();
-       String query = "SELECT * FROM Dosen WHERE nidn = (?)";
+       String query = "SELECT * FROM dosen WHERE nidn = (?)";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, nidn);
@@ -51,7 +51,7 @@ public class Dosen extends Manusia {
                dos.setnidn(rs.getString("nidn"));
                dos.setnama(rs.getString("nama"));
                dos.setnik(rs.getString("nik"));
-               dos.setagama(rs.getString("agama:"));
+               dos.setagama(rs.getString("agama"));
                dos.setjenisKelamin(rs.getString("jenisKelamin"));
                dos.setemail(rs.getString("email"));
                dos.settanggalLahir(rs.getDate("tanggalLahir"));
@@ -68,7 +68,7 @@ public class Dosen extends Manusia {
    
    public ArrayList<Dosen> semuaDB(){
        ArrayList<Dosen> list = new ArrayList<>();
-       String query = "SELECT * FROM Dosen";
+        String query = "SELECT * FROM dosen";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            ResultSet rs = statement.executeQuery();
@@ -77,7 +77,7 @@ public class Dosen extends Manusia {
                dos.setnidn(rs.getString("nidn"));
                dos.setnama(rs.getString("nama"));
                dos.setnik(rs.getString("nik"));
-               dos.setagama(rs.getString("agama:"));
+               dos.setagama(rs.getString("agama"));
                dos.setjenisKelamin(rs.getString("jenisKelamin"));
                dos.setemail(rs.getString("email"));
                dos.settanggalLahir(rs.getDate("tanggalLahir"));
@@ -92,10 +92,37 @@ public class Dosen extends Manusia {
        }
        return list;
    }
+   public Dosen SatuNamaDB(String kunci){
+       Dosen dos = new Dosen();
+       String query = "SELECT * FROM dosen WHERE nama = (?)";
+       try{
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, kunci);
+           ResultSet rs = statement.executeQuery();
+           if(rs.next()){
+               dos.setnidn(rs.getString("nidn"));
+               dos.setnama(rs.getString("nama"));
+               dos.setnik(rs.getString("nik"));
+               dos.setagama(rs.getString("agama"));
+               dos.setjenisKelamin(rs.getString("jenisKelamin"));
+               dos.setemail(rs.getString("email"));
+               dos.settanggalLahir(rs.getDate("tanggalLahir"));
+               dos.setalamat(rs.getString("alamat"));
+               
+           }
+           statement.close();
+           rs.close();
+       }
+       catch(SQLException e){
+           
+       }
+       return dos;
+   }
+   
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO Dosen VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = "INSERT INTO dosen VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setString(1, getnidn());
            statement.setString(2, getnama());
@@ -137,6 +164,14 @@ public class Dosen extends Manusia {
        catch(SQLException e){
            
        }
+   }
+    public boolean cekExistData(String nidn){
+       Dosen d = new Dosen();
+       d.satuDB(nidn);
+       if(d.getnama() == null)
+           return false;
+       else
+           return true;
    }
 
 }
