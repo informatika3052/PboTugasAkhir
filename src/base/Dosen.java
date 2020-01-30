@@ -143,20 +143,20 @@ public class Dosen extends Manusia {
    }
    public void updateDB(){
        try{
-           String query = "UPDATE Dosen SET nidn = (?), nama = (?), nik = (?), agama = (?),"
-                   + " jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nim"
-                   + " = (?)";
+           String query = "UPDATE Dosen SET nama = (?), nik = (?), agama = (?),"
+                   + " jenisKelamin = (?), email = (?), tanggalLahir, alamat = (?) WHERE nidn = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            
-           statement.setString(1, getnidn());
-           statement.setString(2, getnama());
-           statement.setString(3, getnik());
-           statement.setString(4, getagama());
-           statement.setString(5, ""+getjenisKelamin());
-           statement.setString(6, getemail());
+           
+           statement.setString(1, getnama());
+           statement.setString(2, getnik());
+           statement.setString(3, getagama());
+           statement.setString(4, ""+getjenisKelamin());
+           statement.setString(5, getemail());
            java.sql.Date sqlDate = new java.sql.Date(gettanggalLahir().getTime());
-           statement.setDate(7, sqlDate);
-           statement.setString(8, getalamat());
+           statement.setDate(6, sqlDate);
+           statement.setString(7, getalamat());
+           statement.setString(8, getnidn());
            
            statement.execute();
            statement.close();

@@ -55,6 +55,7 @@ public class FrameDoswal extends javax.swing.JFrame {
 		}
 	}
      }
+     
      public void KerjaPraktekDB(){
         setKerjaPraktek(new KerjaPraktek());
         //getKerjaPraktek().setidKp().toString();
@@ -253,7 +254,7 @@ public class FrameDoswal extends javax.swing.JFrame {
         modelTablePersetujuan.setRowCount(0);
         Object[] atributKerjaPraktek = new Object[2];
         try {
-            ArrayList PersetujuanDosenAll = new KerjaPraktek().semuaDB(idJadwal);
+            ArrayList PersetujuanDosenAll = new KerjaPraktek().semuaDB();
             Iterator listRevisi = PersetujuanDosenAll.iterator();
             while(listRevisi.hasNext()){
                 KerjaPraktek eachKerjaPraktek;

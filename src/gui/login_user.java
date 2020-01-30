@@ -121,7 +121,7 @@ public class login_user extends javax.swing.JFrame {
 		if ((getU().cekLogin(username1.getText(), pass.getText())) && (getU().gettipeUser() != null)) {
             switch (getU().gettipeUser())
             {
-                case "Admin" :
+                case "admin" :
                 {
                     new FrameAdmin(getU()).setVisible(true);
                     break;
