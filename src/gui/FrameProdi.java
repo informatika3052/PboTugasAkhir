@@ -39,9 +39,10 @@ public class FrameProdi extends javax.swing.JFrame {
         super("Prodi : " + (new Prodi().satuDB(user.getusername())).getnamaProdi());
         setUser(user);
 	setProdi(new Prodi().satuDB(user.getusername()));
+	initComponents();
 	setComboBox();
         
-        initComponents();
+        
       }
     
      public void setComboBox()
@@ -116,7 +117,7 @@ public class FrameProdi extends javax.swing.JFrame {
 
                 dsnPembLabel.setText("Dosen Pembimbing");
 
-                dsnComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Dosen Pembimbing-" }));
+                dsnComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
                 dsnComboBox.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 dsnComboBoxActionPerformed(evt);
@@ -153,10 +154,6 @@ public class FrameProdi extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(dsnComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(257, 257, 257))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(dsnPembLabel)
@@ -171,9 +168,9 @@ public class FrameProdi extends javax.swing.JFrame {
                                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addComponent(jadwalMulai)
-                                                                .addGap(18, 18, 18)
+                                                                .addGap(32, 32, 32)
                                                                 .addComponent(mulaiKP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(jadwalAkhir)
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,6 +180,10 @@ public class FrameProdi extends javax.swing.JFrame {
                                                                                 .addComponent(btn_logout))
                                                                         .addComponent(akhirKP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(0, 28, Short.MAX_VALUE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dsnComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(282, 282, 282))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,11 +208,11 @@ public class FrameProdi extends javax.swing.JFrame {
                                                                 .addComponent(jadwalAkhir))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jadwalMulai)))
-                                                .addGap(8, 8, 8))
-                                        .addComponent(mulaiKP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jadwalMulai, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(mulaiKP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                         .addComponent(akhirKP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btn_logout)
                                         .addComponent(btn_simpan1))
@@ -224,8 +225,12 @@ public class FrameProdi extends javax.swing.JFrame {
     private void KPCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KPCheckBoxActionPerformed
         // TODO add your handling code here:
         if(KPCheckBox.isSelected()){
+		PersetujuanProdi perPro = new PersetujuanProdi(prodi.getidProdi(),getPersetujuanDosen().getidAccDosen() , true);
+            perPro.masukDB();
         }
         else{
+		PersetujuanProdi perPro = new PersetujuanProdi(prodi.getidProdi(),getPersetujuanDosen().getidAccDosen() , false);
+            perPro.masukDB();
             }
     }//GEN-LAST:event_KPCheckBoxActionPerformed
 
@@ -313,7 +318,7 @@ public class FrameProdi extends javax.swing.JFrame {
                 KerjaPraktek eachKerjaPraktek;
                 eachKerjaPraktek = (KerjaPraktek) listRevisi.next();
                 atributKerjaPraktek[0] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.mahasiswa.getnama();
-                atributKerjaPraktek[1] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.mahasiswa.getnama();
+                atributKerjaPraktek[1] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.mahasiswa.getnim();
                 atributKerjaPraktek[2] = new SimpleDateFormat("dd-MM-yyyy").format(eachKerjaPraktek.getnamaKegiatan());
                 atributKerjaPraktek[3] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.getinstansi();
         
