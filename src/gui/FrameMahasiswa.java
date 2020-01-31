@@ -242,7 +242,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-        JOptionPane.showMessageDialog(null,"data tersimpan");
+        //JOptionPane.showMessageDialog(null,"data tersimpan");
         lb_nama.setVisible(false);
         lb_nim.setVisible(false);
         lb_kegiatan.setVisible(false);
@@ -258,15 +258,15 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_doswal.setVisible(false);
         txt_dospem.setVisible(false);
         txt_status.setVisible(false);
-	
 	KerjaPraktek kp = new KerjaPraktek();
-	kerjaPraktek.setinstansi(txt_instansi.getText());
-	kerjaPraktek.setnamaKegiatan(txt_kegiatan.getText());
+	kp.jadwalKerjaPraktek.getidJadwal();
+	kp.setnamaKegiatan(txt_kegiatan.getText());
+	kp.setinstansi(txt_instansi.getText());
 	   try{ 
                kerjaPraktek.masukDB();
+	
         JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
        }catch (Exception s){
-           JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
        }
     }//GEN-LAST:event_btn_simpanActionPerformed
 
@@ -282,7 +282,9 @@ public class FrameMahasiswa extends javax.swing.JFrame {
 	txt_doswal.setVisible(false);
         txt_dospem.setVisible(false);
         txt_status.setVisible(false);
-	
+        lb_doswal.setVisible(false);
+        lb_dospem.setVisible(false);
+        lb_status.setVisible(false);
 	
 
     }//GEN-LAST:event_btn_daftarActionPerformed
@@ -310,7 +312,6 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_kegiatan.setText(getKerjaPraktek().getnamaKegiatan());
         txt_doswal.setText(getDosen().getnama());
         txt_dospem.setText(getDosen().getnama());
-	kerjaPraktek.masukDB();
 	
     }//GEN-LAST:event_btn_viewActionPerformed
 

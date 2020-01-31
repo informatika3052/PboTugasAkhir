@@ -5,12 +5,12 @@ package base;
  * Author:  renol
  * Purpose: Defines the Class JadwalKerjaPraktek
  ***********************************************************************/
-
 import connect.connect;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.sql.Date;
 
 /** @pdOid 69ed8077-8547-41c2-bfc5-6ca35ace8d3e */
 public class JadwalKerjaPraktek {
@@ -117,14 +117,14 @@ public class JadwalKerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO jadwalkerjapraktek VALUES (null, ?, ?, ?)";
+           String query = "INSERT INTO jadwalkerjapraktek VALUES (?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            statement.setInt(1, getidJadwal());
            statement.setString(2, prodi.getidProdi());
-           java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
-           statement.setDate(3, sqlDate);
-           sqlDate = new java.sql.Date(getakhir().getTime());
-           statement.setDate(4, sqlDate);
+           java.sql.Date aa = new java.sql.Date(getmulai().getTime());
+           statement.setDate(3, aa);
+	   java.sql.Date bb = new java.sql.Date(getakhir().getTime());
+           statement.setDate(4, bb);
            statement.execute();
            statement.close();
        }
@@ -137,12 +137,12 @@ public class JadwalKerjaPraktek {
        try{
            String query = "UPDATE jadwalkerjapraktek SET idProdi = (?), mulai = (?), akhir = (?) WHERE idJadwal = (?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setString(1, prodi.getidProdi());
-           java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
-           statement.setDate(2, sqlDate);
-           sqlDate = new java.sql.Date(getakhir().getTime());
+           statement.setInt(1, getidJadwal());
+           statement.setString(2, prodi.getidProdi());
+            java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
            statement.setDate(3, sqlDate);
-           statement.setInt(4, getidJadwal());
+	    java.sql.Date sqlDatee = new java.sql.Date(getakhir().getTime());
+           statement.setDate(4, sqlDatee);
            statement.execute();
            statement.close();
        }
@@ -151,3 +151,6 @@ public class JadwalKerjaPraktek {
        }
    }
 }
+//jkp.setmulai((Date) mulaiKP.getDate());
+//        jkp.setakhir((Date) akhirKP.getDate());
+//        
