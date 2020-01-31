@@ -132,4 +132,22 @@ public class JadwalKerjaPraktek {
            
        }
    }
+   
+   public void updateDB(){
+       try{
+           String query = "UPDATE jadwalkerjapraktek SET idProdi = (?), mulai = (?), akhir = (?) WHERE idJadwal = (?)";
+           PreparedStatement statement = connect.getConnection().prepareStatement(query);
+           statement.setString(1, prodi.getidProdi());
+           java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
+           statement.setDate(2, sqlDate);
+           sqlDate = new java.sql.Date(getakhir().getTime());
+           statement.setDate(3, sqlDate);
+           statement.setInt(4, getidJadwal());
+           statement.execute();
+           statement.close();
+       }
+       catch(SQLException e){
+           
+       }
+   }
 }
