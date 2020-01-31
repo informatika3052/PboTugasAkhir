@@ -259,14 +259,18 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_status.setVisible(false);
 	
 	KerjaPraktek kp = new KerjaPraktek();
-	kerjaPraktek.setinstansi(txt_instansi.getText());
-	kerjaPraktek.setnamaKegiatan(txt_kegiatan.getText());
-	   try{ 
-               kerjaPraktek.masukDB();
+        //txt_nama.setText(mahasiswa.getnama());
+	getMahasiswa().setnama(txt_nama.getText());
+        getMahasiswa().setnim(txt_nim.getText());
+	getKerjaPraktek().setinstansi(txt_instansi.getText());
+	getKerjaPraktek().setnamaKegiatan(txt_kegiatan.getText());
+	kerjaPraktek.masukDB();
+//	   try{ 
+//               kerjaPraktek.masukDB();
         JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
-       }catch (Exception s){
-           JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
-       }
+//       }catch (Exception s){
+//           JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
+//       }
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void btn_daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_daftarActionPerformed
