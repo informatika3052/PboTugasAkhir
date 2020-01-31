@@ -262,7 +262,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
 	kerjaPraktek.setinstansi(txt_instansi.getText());
 	kerjaPraktek.setnamaKegiatan(txt_kegiatan.getText());
 	   try{ 
-               kp.masukDB();
+               kerjaPraktek.masukDB();
         JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
        }catch (Exception s){
            JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
@@ -301,7 +301,6 @@ public class FrameMahasiswa extends javax.swing.JFrame {
 	
 	txt_nama.setText(getMahasiswa().getnama());
         txt_nim.setText(getMahasiswa().getnim());
-        //txt_semester.setText();
         txt_instansi.setText(getKerjaPraktek().getinstansi());
         txt_kegiatan.setText(getKerjaPraktek().getnamaKegiatan());
         txt_doswal.setText(getDosen().getnama());

@@ -43,6 +43,7 @@ public class FrameDoswal extends javax.swing.JFrame {
         namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
 	setComboBox();
     }
+     
      public void setComboBox()
      {
         ArrayList<Mahasiswa> list = new Mahasiswa().semuaDB();
@@ -180,6 +181,7 @@ public class FrameDoswal extends javax.swing.JFrame {
 
     private void nimNamaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimNamaComboBoxActionPerformed
         KerjaPraktekDB();
+	getPersetujuanFromDatabase();
     }//GEN-LAST:event_nimNamaComboBoxActionPerformed
 
     private void konfirmCheckbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konfirmCheckbox1ActionPerformed
@@ -249,7 +251,7 @@ public class FrameDoswal extends javax.swing.JFrame {
         private javax.swing.JTable tabelKP1;
         // End of variables declaration//GEN-END:variables
 
-    public void getPersetujuanFromDatabase(int idJadwal){
+    public void getPersetujuanFromDatabase(){
         DefaultTableModel modelTablePersetujuan = (DefaultTableModel) tabelKP1.getModel();
         modelTablePersetujuan.setRowCount(0);
         Object[] atributKerjaPraktek = new Object[2];
