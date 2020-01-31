@@ -16,6 +16,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     private Dosen dosen = new Dosen();
     private Mahasiswa mahasiswa = new Mahasiswa();
     private KerjaPraktek kerjaPraktek = new KerjaPraktek();
+    private JadwalKerjaPraktek jadwalKerjaPraktek = new JadwalKerjaPraktek();
     private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
     private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
     private Bimbingan bimbingan = new Bimbingan();
@@ -278,6 +279,9 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_nim.setVisible(true);
         txt_kegiatan.setVisible(true);
         txt_instansi.setVisible(true);
+	txt_doswal.setVisible(false);
+        txt_dospem.setVisible(false);
+        txt_status.setVisible(false);
 	
 	
 
@@ -295,16 +299,18 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_nim.setVisible(true);
         txt_instansi.setVisible(true);
 	txt_kegiatan.setVisible(true);
-        txt_doswal.setVisible(true);
-        txt_dospem.setVisible(true);
-        txt_status.setVisible(true);
+        txt_doswal.setVisible(false);
+        txt_dospem.setVisible(false);
+        txt_status.setVisible(false);
 	
 	txt_nama.setText(getMahasiswa().getnama());
         txt_nim.setText(getMahasiswa().getnim());
+	jadwalKerjaPraktek.getidJadwal();
         txt_instansi.setText(getKerjaPraktek().getinstansi());
         txt_kegiatan.setText(getKerjaPraktek().getnamaKegiatan());
         txt_doswal.setText(getDosen().getnama());
         txt_dospem.setText(getDosen().getnama());
+	kerjaPraktek.masukDB();
 	
     }//GEN-LAST:event_btn_viewActionPerformed
 
@@ -385,6 +391,13 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }
     public void setKerjaPraktek(KerjaPraktek kerjaPraktek) {
         this.kerjaPraktek = kerjaPraktek;
+    }
+    
+    public JadwalKerjaPraktek getJadwalKerjaPraktek() {
+        return jadwalKerjaPraktek;
+    }
+    public void setJadwalKerjaPraktek(JadwalKerjaPraktek jadwalKerjaPraktek) {
+        this.jadwalKerjaPraktek = jadwalKerjaPraktek;
     }
     public Mahasiswa getMahasiswa() {
         return mahasiswa;

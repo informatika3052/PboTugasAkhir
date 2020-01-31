@@ -39,8 +39,8 @@ public class FrameDoswal extends javax.swing.JFrame {
         setUser(user);
         setDosen(new Dosen().satuDB(user.getusername()));
         initComponents();
-        nidnLabel1.setText("NIDN                            : " + getDosen().getnidn());
-        namaDosenLabel1.setText("Nama Dosen                : " + getDosen().getnama());
+        nidnLabel1.setText("NIDN                               : " +  getDosen().getnidn());
+        namaDosenLabel1.setText("Nama Dosen                 : " +  getDosen().getnama());
 	setComboBox();
     }
      
@@ -261,7 +261,7 @@ public class FrameDoswal extends javax.swing.JFrame {
             while(listRevisi.hasNext()){
                 KerjaPraktek eachKerjaPraktek;
                 eachKerjaPraktek = (KerjaPraktek) listRevisi.next();
-                atributKerjaPraktek[0] = eachKerjaPraktek.getidKp() + " | " + eachKerjaPraktek.getinstansi();
+                atributKerjaPraktek[0] = eachKerjaPraktek.getinstansi();
                 atributKerjaPraktek[1] = new SimpleDateFormat("dd-MM-yyyy").format(eachKerjaPraktek.getnamaKegiatan());
         
                 modelTablePersetujuan.addRow(atributKerjaPraktek);
