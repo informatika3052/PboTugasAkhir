@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/gui/login_user.java</file>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/base/Dosen.java</file>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/gui/FrameDoswal.java</file>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/base/Mahasiswa.java</file>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/gui/FrameAdmin.java</file>
-            <file>file:/C:/Users/Jempol/Documents/GitHub/PboTugasAkhir/src/base/Prodi.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/gui/FrameDoswal.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/KerjaPraktek.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/gui/FrameProdi.java</file>
+            <file>file:/C:/Users/renol/Documents/GitHub/PboTugasAkhir/src/base/JadwalKerjaPraktek.java</file>
         </group>
     </open-files>
 </project-private>
