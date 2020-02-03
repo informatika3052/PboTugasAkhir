@@ -96,19 +96,20 @@ public class KerjaPraktek {
        return kp;
    }
    
-   public ArrayList<JadwalKerjaPraktek> semuaDB(){
-       ArrayList<JadwalKerjaPraktek> list = new ArrayList<>();
-       String query = "SELECT * FROM jadwalkerjapraktek";
+   public ArrayList<KerjaPraktek> semuaDB(){
+       ArrayList<KerjaPraktek> list = new ArrayList<>();
+       String query = "SELECT * FROM kerjapraktek";
        try{
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            ResultSet rs = statement.executeQuery();
            while(rs.next()){
-               JadwalKerjaPraktek jkp = new JadwalKerjaPraktek();
-               jkp.setidJadwal(rs.getInt("idJadwal"));
-               jkp.prodi = new Prodi().satuDB(rs.getString("idProdi"));
-               jkp.setmulai(rs.getDate("mulai"));
-               jkp.setakhir(rs.getDate("akhir"));
-               list.add(jkp);
+               KerjaPraktek kp = new KerjaPraktek();
+               kp.setidKp(rs.getInt("idKp"));
+	       kp.mahasiswa = new Mahasiswa().satuDB(rs.getString("nim"));
+               kp.jadwalKerjaPraktek = new JadwalKerjaPraktek().satuDB(rs.getInt("idJadwal"));
+               kp.setnamaKegiatan(rs.getString("namaKegiatan"));
+               kp.setinstansi(rs.getString("instansi"));
+               list.add(kp);
            }
            statement.close();
            rs.close();
@@ -121,18 +122,17 @@ public class KerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO kerjapraktek VALUES (null,?, ?, ?, ?)";
+           String query = "INSERT INTO kerjapraktek VALUES (null, ?, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
            //statement.setInt(1, getidKp());
            if (mahasiswa != null )
                statement.setString(1, mahasiswa.getnim());
            else
                statement.setString(1, null);
-           if (jadwalKerjaPraktek != null)
+	   if (jadwalKerjaPraktek != null)
                statement.setInt(2, jadwalKerjaPraktek.getidJadwal());
            else
-               statement.setInt(2, 0);      
-           
+               statement.setInt(2, Integer.parseInt(null));      
            statement.setString(3, getnamaKegiatan());
            statement.setString(4, getinstansi());
 	   

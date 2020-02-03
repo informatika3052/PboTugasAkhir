@@ -5,8 +5,11 @@
  */
 package gui;
 
+import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 import base.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author Jempol
@@ -19,8 +22,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
     private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
     private Bimbingan bimbingan = new Bimbingan();
-    private String namaKegiatan;
-    private String instansi;
+    private JadwalKerjaPraktek jadwalkerjapraktek = new JadwalKerjaPraktek();
     /**
      * Creates new form FrameMahasiswa
      */
@@ -35,22 +37,6 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         setMahasiswa(new Mahasiswa().satuDB(user.getusername()));
         initComponents();
      }
-    public void hideShowAll(boolean bool){
-        lb_nama.setVisible(bool);
-        lb_nim.setVisible(bool);
-        lb_kegiatan.setVisible(bool);
-        lb_KP.setVisible(bool);
-        lb_doswal.setVisible(bool);
-        lb_dospem.setVisible(bool);
-        lb_status.setVisible(bool);
-        txt_nama.setVisible(bool);
-        txt_nim.setVisible(bool);
-        txt_kegiatan.setVisible(bool);
-        txt_instansi.setVisible(bool);
-        txt_doswal.setVisible(bool);
-        txt_dospem.setVisible(bool);
-        txt_status.setVisible(bool);
-    }
 //    public void ShowDaftar(boolean bool){
 //        
 //    }
@@ -243,47 +229,44 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-        JOptionPane.showMessageDialog(null,"data tersimpan");
-        lb_nama.setVisible(false);
-        lb_nim.setVisible(false);
-        lb_kegiatan.setVisible(false);
-        lb_KP.setVisible(false);
-        lb_doswal.setVisible(false);
-        lb_dospem.setVisible(false);
-        lb_status.setVisible(false);
-        txt_nama.setVisible(false);
-        txt_nim.setVisible(false);
-        txt_kegiatan.setVisible(false);
-        txt_instansi.setVisible(false);
-	txt_kegiatan.setVisible(false);
-        txt_doswal.setVisible(false);
-        txt_dospem.setVisible(false);
-        txt_status.setVisible(false);
+	 
 	
-	KerjaPraktek kp = new KerjaPraktek();
-        //txt_nama.setText(mahasiswa.getnama());
-	getMahasiswa().setnama(txt_nama.getText());
-        getMahasiswa().setnim(txt_nim.getText());
-	getKerjaPraktek().setinstansi(txt_instansi.getText());
-	getKerjaPraktek().setnamaKegiatan(txt_kegiatan.getText());
-	kp.masukDB();
-//	   try{ 
-//               kerjaPraktek.masukDB();
-        JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
+	    
+	String nim1 = getMahasiswa().getnim();
+	int jdwal = getJadwalKerjaPraktek().getidJadwal();
+	String keg =  txt_kegiatan.getText();
+	String insta =  txt_instansi.getText();
+	       setKerjaPraktek(new KerjaPraktek(nim1,jdwal,keg,insta));
+              getKerjaPraktek().masukDB();
+	
+//	
+//	setKerjaPraktek(new KerjaPraktek(getMahasiswa().getnim(), getJadwalKerjaPraktek().getidJadwal(), txt_kegiatan.getText(), txt_instansi.getText()));
+//	
+//	
+//	
+//        JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
 //       }catch (Exception s){
 //           JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
 //       }
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void btn_daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_daftarActionPerformed
-        hideShowAll(true);
+        lb_nama.setVisible(true);
+        lb_nim.setVisible(true);
+        lb_kegiatan.setVisible(true);
+        lb_KP.setVisible(true);
+        txt_nama.setVisible(true);
+        txt_nim.setVisible(true);
+        txt_kegiatan.setVisible(true);
+        txt_instansi.setVisible(true);
+	lb_doswal.setVisible(false);
+        lb_dospem.setVisible(false);
+        lb_status.setVisible(false);
+        txt_doswal.setVisible(false);
+        txt_dospem.setVisible(false);
+        txt_status.setVisible(false);
         
-        KerjaPraktek kp = new KerjaPraktek();
-        getMahasiswa().setnama(txt_nama.getText());
-        getMahasiswa().setnim(txt_nim.getText());
-        getKerjaPraktek().setnamaKegiatan(txt_kegiatan.getText());
-        getKerjaPraktek().setinstansi(txt_instansi.getText());
-        kp.masukDB();
+       
 
     }//GEN-LAST:event_btn_daftarActionPerformed
 
@@ -371,7 +354,26 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         private javax.swing.JTextField txt_nim;
         private javax.swing.JTextField txt_status;
         // End of variables declaration//GEN-END:variables
-
+	
+	
+	
+	
+    public void hideShowAll(boolean bool){
+        lb_nama.setVisible(bool);
+        lb_nim.setVisible(bool);
+        lb_kegiatan.setVisible(bool);
+        lb_KP.setVisible(bool);
+        lb_doswal.setVisible(bool);
+        lb_dospem.setVisible(bool);
+        lb_status.setVisible(bool);
+        txt_nama.setVisible(bool);
+        txt_nim.setVisible(bool);
+        txt_kegiatan.setVisible(bool);
+        txt_instansi.setVisible(bool);
+        txt_doswal.setVisible(bool);
+        txt_dospem.setVisible(bool);
+        txt_status.setVisible(bool);
+    }
    public User getUser() {
         return user;
     }
@@ -389,6 +391,12 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }
     public void setKerjaPraktek(KerjaPraktek kerjaPraktek) {
         this.kerjaPraktek = kerjaPraktek;
+    }
+    public JadwalKerjaPraktek getJadwalKerjaPraktek() {
+        return jadwalkerjapraktek;
+    }
+    public void setJadwalKerjaPraktek(JadwalKerjaPraktek jadwalkerjapraktek) {
+        this.jadwalkerjapraktek = jadwalkerjapraktek;
     }
     public Mahasiswa getMahasiswa() {
         return mahasiswa;
@@ -418,24 +426,5 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     public void setBimbingan(Bimbingan bimbingan) {
         this.bimbingan = bimbingan;
     }
-    public String getnamaKegiatan() {
-      return namaKegiatan;
-   }
-   
-   /** @param newNamaKegiatan
-    * @pdOid 93a4fe52-29b7-46a1-a083-fc38244db6c3 */
-   public void setnamaKegiatan(String newNamaKegiatan) {
-      namaKegiatan = newNamaKegiatan;
-   }
-   
-   /** @pdOid 24d0769e-661b-4b9f-8ffb-af4a049001b9 */
-   public String getinstansi() {
-      return instansi;
-   }
-   
-   /** @param newInstansi
-    * @pdOid 0c43bbc3-1610-452e-bdad-04dbb67ad60a */
-   public void setinstansi(String newInstansi) {
-      instansi = newInstansi;
-   }
+    
 }
