@@ -29,11 +29,11 @@ public class JadwalKerjaPraktek {
       // TODO: implement
    }
    
-   public JadwalKerjaPraktek(Date mulai, Date akhir, String idProdi) {
+   public JadwalKerjaPraktek(String idProdi,Date mulai, Date akhir) {
       // TODO: implement
+      prodi = new Prodi().satuDB(idProdi);
       setmulai(mulai);
       setakhir(akhir);
-      prodi = new Prodi().satuDB(idProdi);
    }
    
    /** @pdOid 29fb26ab-d8a3-4d91-aa61-973f68dfdb9f */
@@ -119,12 +119,15 @@ public class JadwalKerjaPraktek {
        try{
            String query = "INSERT INTO jadwalkerjapraktek VALUES (null, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setInt(1, getidJadwal());
-           statement.setString(2, prodi.getidProdi());
+           //statement.setInt(1, getidJadwal());
+           if (prodi != null )
+               statement.setString(1, prodi.getidProdi());
+           else
+               statement.setString(1, null);
            java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
-           statement.setDate(3, sqlDate);
+           statement.setDate(2, sqlDate);
            sqlDate = new java.sql.Date(getakhir().getTime());
-           statement.setDate(4, sqlDate);
+           statement.setDate(3, sqlDate);
            statement.execute();
            statement.close();
        }
