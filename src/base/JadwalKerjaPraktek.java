@@ -119,15 +119,15 @@ public class JadwalKerjaPraktek {
        try{
            String query = "INSERT INTO jadwalkerjapraktek VALUES (null, ?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           statement.setInt(1, getidJadwal());
+           //statement.setInt(1, getidJadwal());
            if (prodi != null )
-               statement.setString(2, prodi.getidProdi());
+               statement.setString(1, prodi.getidProdi());
            else
-               statement.setString(2, null);
+               statement.setString(1, null);
            java.sql.Date sqlDate = new java.sql.Date(getmulai().getTime());
-           statement.setDate(3, sqlDate);
+           statement.setDate(2, sqlDate);
            sqlDate = new java.sql.Date(getakhir().getTime());
-           statement.setDate(4, sqlDate);
+           statement.setDate(3, sqlDate);
            statement.execute();
            statement.close();
        }

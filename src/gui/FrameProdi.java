@@ -325,7 +325,7 @@ public class FrameProdi extends javax.swing.JFrame {
         if(AturToggleButton.isSelected()){
             mulaiKP.getDate();
             akhirKP.getDate();
-            jadwalKerjaPraktek.masukDB();
+//            jadwalKerjaPraktek.masukDB();
             
         }
         else
