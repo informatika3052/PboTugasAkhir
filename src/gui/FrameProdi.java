@@ -6,8 +6,10 @@
 package gui;
 
 import base.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.StringTokenizer;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,23 +29,27 @@ public class FrameProdi extends javax.swing.JFrame {
     private PersetujuanDosen persetujuanDosen = new PersetujuanDosen();
     private PersetujuanProdi persetujuanProdi = new PersetujuanProdi();
     private Bimbingan bimbingan = new Bimbingan();
+    
     /**
      * Creates new form FrameProdi
      */
     public FrameProdi() {
         initComponents();
 	setComboxAll();
+        mulaiKP.setDateFormatString("dd-MM-yyyy");
+        akhirKP.setDateFormatString("dd-MM-yyyy");
     }
 
     public FrameProdi(User user) {
         super("Prodi : " + (new Prodi().satuDB(user.getusername())).getnamaProdi());
         setUser(user);
 	setProdi(new Prodi().satuDB(user.getusername()));
-	initComponents();
+        initComponents();
 	setComboxAll();
-        
-        
+        mulaiKP.setDateFormatString("dd-MM-yyyy");
+        akhirKP.setDateFormatString("dd-MM-yyyy");
       }
+    
     public void setDosenCombox(ArrayList<Dosen> list){
         Iterator<Dosen> tiapList = list.iterator();
         
@@ -283,34 +289,43 @@ public class FrameProdi extends javax.swing.JFrame {
 
     private void SimpanKpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanKpButtonActionPerformed
         // TODO add your handling code here:
-        JadwalKerjaPraktek jkp = new JadwalKerjaPraktek();
-        ArrayList<JadwalKerjaPraktek> list = new JadwalKerjaPraktek().semuaDB();
-        Iterator<JadwalKerjaPraktek> tiapList = list.iterator();
+        Date jadwal1 = mulaiKP.getDate();
+        Date jadwal2 = akhirKP.getDate();
+        setJadwalKerjaPraktek(new JadwalKerjaPraktek(getProdi().getidProdi(), jadwal1 , jadwal2));
+        getJadwalKerjaPraktek().masukDB();
         
-        while(tiapList.hasNext()){
-            JadwalKerjaPraktek temp = tiapList.next();
-            if (temp.prodi.getidProdi().equals(getProdi().getidProdi())){
-                jkp = temp;
-                break;
-            }
-        }
-	jkp.prodi =  getProdi();
-        jkp.setmulai(mulaiKP.getDate());
-        jkp.setakhir(akhirKP.getDate());
-            
-        if(jkp != null){
-            jkp.updateDB();
-        }
-        else
-        {
-            jkp.masukDB();
-        }
+//        JadwalKerjaPraktek jkp = new JadwalKerjaPraktek();
+//        ArrayList<JadwalKerjaPraktek> list = new JadwalKerjaPraktek().semuaDB();
+//        Iterator<JadwalKerjaPraktek> tiapList = list.iterator();
+//        
+//        while(tiapList.hasNext()){
+//            JadwalKerjaPraktek temp = tiapList.next();
+//            if (temp.prodi.getidProdi().equals(getProdi().getidProdi())){
+//                jkp = temp;
+//                break;
+//            }
+//        }
+//        
+//	jkp.prodi =  getProdi().getidProdi();
+//        jkp.setmulai(mulaiKP.getDate());
+//        jkp.setakhir(akhirKP.getDate());
+//            
+//        if(jkp != null){
+//            jkp.updateDB();
+//        }
+//        else
+//        {
+//            jkp.masukDB();
+//        }
         JOptionPane.showMessageDialog(null, "Jadwal berhasil di atur");
     }//GEN-LAST:event_SimpanKpButtonActionPerformed
 
     private void AturToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AturToggleButtonActionPerformed
         // TODO add your handling code here:
         if(AturToggleButton.isSelected()){
+            mulaiKP.getDate();
+            akhirKP.getDate();
+            jadwalKerjaPraktek.masukDB();
             
         }
         else
