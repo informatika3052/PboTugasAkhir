@@ -122,9 +122,8 @@ public class KerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO kerjapraktek VALUES (null, ?, ?, ?, ?)";
+           String query = "INSERT INTO kerjapraktek (nim,idJadwal,namaKegiatan,instansi) VALUES (?,?, ?, ?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           //statement.setInt(1, getidKp());
            if (mahasiswa != null )
                statement.setString(1, mahasiswa.getnim());
            else
@@ -133,7 +132,7 @@ public class KerjaPraktek {
                statement.setInt(2, jadwalKerjaPraktek.getidJadwal());
            else
                statement.setInt(2, Integer.parseInt(null));      
-           statement.setString(3, getnamaKegiatan());
+          statement.setString(3, getnamaKegiatan());
            statement.setString(4, getinstansi());
 	   
            statement.execute();

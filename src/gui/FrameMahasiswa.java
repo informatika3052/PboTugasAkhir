@@ -96,12 +96,6 @@ public class FrameMahasiswa extends javax.swing.JFrame {
 
                 lb_KP.setText("Instansi KP");
 
-                txt_instansi.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                txt_instansiActionPerformed(evt);
-                        }
-                });
-
                 lb_doswal.setText("Dosen Wali");
 
                 lb_dospem.setText("Dosen Pembimbing");
@@ -160,9 +154,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(lb_KP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lb_kegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                        .addComponent(lb_kegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,7 +225,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
 	
 	    
 	String nim1 = getMahasiswa().getnim();
-	int jdwal = getJadwalKerjaPraktek().getidJadwal();
+	int jdwal = jadwalkerjapraktek.getidJadwal();
 	String keg =  txt_kegiatan.getText();
 	String insta =  txt_instansi.getText();
 	       setKerjaPraktek(new KerjaPraktek(nim1,jdwal,keg,insta));
@@ -294,10 +286,6 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_dospem.setText(getDosen().getnama());
 	
     }//GEN-LAST:event_btn_viewActionPerformed
-
-        private void txt_instansiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_instansiActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_txt_instansiActionPerformed
 
     /**
      * @param args the command line arguments
