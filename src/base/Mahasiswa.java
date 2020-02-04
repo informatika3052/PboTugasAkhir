@@ -27,11 +27,11 @@ public class Mahasiswa extends Manusia {
    public Mahasiswa() {
       // TODO: implement
    }
-   public Mahasiswa(String nama, String nik, String agama, String jenisKelamin, String email, Date tanggalLahir, String alamat, String nim, String npp, String idProdi) {
+   public Mahasiswa(String nama, String nik, String agama, String jenisKelamin, String email, Date tanggalLahir, String alamat, String nim, String nidn, String idProdi) {
       // TODO: implement
       super(nama, nik, agama, jenisKelamin, email, tanggalLahir, alamat);
       setnim(nim);
-      dosen = new Dosen().satuDB(npp);
+      dosen = new Dosen().satuDB(nidn);
       prodi = new Prodi().satuDB(idProdi);
    }
    
