@@ -28,7 +28,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
      */
     public FrameMahasiswa() {
         initComponents();
-        
+        hideShowAll(false);
     }
     
      public FrameMahasiswa(User user) {
@@ -36,6 +36,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         setUser(user);
         setMahasiswa(new Mahasiswa().satuDB(user.getusername()));
         initComponents();
+        hideShowAll(false);
      }
 //    public void ShowDaftar(boolean bool){
 //        
@@ -229,63 +230,36 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-	 
-	
-	    
-	String nim1 = getMahasiswa().getnim();
-	int jdwal = getJadwalKerjaPraktek().getidJadwal();
+
+        
+        String nim1 = mahasiswa.getnim();
+	int jdwal = jadwalkerjapraktek.getidJadwal();
 	String keg =  txt_kegiatan.getText();
 	String insta =  txt_instansi.getText();
-	       setKerjaPraktek(new KerjaPraktek(nim1,jdwal,keg,insta));
-              getKerjaPraktek().masukDB();
+	setKerjaPraktek(new KerjaPraktek(nim1,jdwal,keg,insta));
+        getKerjaPraktek().masukDB();
 	
 //	
 //	setKerjaPraktek(new KerjaPraktek(getMahasiswa().getnim(), getJadwalKerjaPraktek().getidJadwal(), txt_kegiatan.getText(), txt_instansi.getText()));
+//         getKerjaPraktek().masukDB();
 //	
 //	
-//	
-//        JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
+          JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
+          hideShowAll(false);
 //       }catch (Exception s){
 //           JOptionPane.showMessageDialog(null,"DATA GAGAL DISIMPAN");
 //       }
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void btn_daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_daftarActionPerformed
-        lb_nama.setVisible(true);
-        lb_nim.setVisible(true);
-        lb_kegiatan.setVisible(true);
-        lb_KP.setVisible(true);
-        txt_nama.setVisible(true);
-        txt_nim.setVisible(true);
-        txt_kegiatan.setVisible(true);
-        txt_instansi.setVisible(true);
-	lb_doswal.setVisible(false);
-        lb_dospem.setVisible(false);
-        lb_status.setVisible(false);
-        txt_doswal.setVisible(false);
-        txt_dospem.setVisible(false);
-        txt_status.setVisible(false);
-        
-       
-
+        daftarShowAll(true);
+        txt_nama.setText(getMahasiswa().getnama());
+        txt_nim.setText(getMahasiswa().getnim());
     }//GEN-LAST:event_btn_daftarActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        lb_nama.setVisible(true);
-        lb_nim.setVisible(true);
-        lb_kegiatan.setVisible(true);
-        lb_KP.setVisible(true);
-        lb_doswal.setVisible(true);
-        lb_dospem.setVisible(true);
-        lb_status.setVisible(true);
-        txt_nama.setVisible(true);
-        txt_nim.setVisible(true);
-        txt_instansi.setVisible(true);
-	txt_kegiatan.setVisible(true);
-        txt_doswal.setVisible(true);
-        txt_dospem.setVisible(true);
-        txt_status.setVisible(true);
-	
+        hideShowAll(true);
+        
 	txt_nama.setText(getMahasiswa().getnama());
         txt_nim.setText(getMahasiswa().getnim());
         txt_instansi.setText(getKerjaPraktek().getinstansi());
@@ -374,6 +348,19 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         txt_dospem.setVisible(bool);
         txt_status.setVisible(bool);
     }
+    
+    public void daftarShowAll(boolean bool){
+        lb_nama.setVisible(bool);
+        lb_nim.setVisible(bool);
+        lb_kegiatan.setVisible(bool);
+        lb_KP.setVisible(bool);
+        txt_nama.setVisible(bool);
+        txt_nim.setVisible(bool);
+        txt_kegiatan.setVisible(bool);
+        txt_instansi.setVisible(bool);
+        
+    }
+    
    public User getUser() {
         return user;
     }
