@@ -84,8 +84,8 @@ public class KerjaPraktek {
                kp.setidKp(rs.getInt("idKp"));
 	       kp.mahasiswa = new Mahasiswa().satuDB(rs.getString("nim"));
                kp.jadwalKerjaPraktek = new JadwalKerjaPraktek().satuDB(rs.getInt("idJadwal"));
-               kp.jadwalKerjaPraktek.setmulai(rs.getDate("mulai"));
-               kp.jadwalKerjaPraktek.setakhir(rs.getDate("akhir"));
+               kp.setnamaKegiatan(rs.getString("namaKegiatan"));
+               kp.setinstansi(rs.getString("instansi"));
            }
            statement.close();
            rs.close();
@@ -122,16 +122,16 @@ public class KerjaPraktek {
    
    public void masukDB(){
        try{
-           String query = "INSERT INTO kerjapraktek (nim,idJadwal,namaKegiatan,instansi) VALUES (?,?, ?, ?)";
+           String query = "INSERT INTO kerjapraktek VALUES (null, ?,?,?,?)";
            PreparedStatement statement = connect.getConnection().prepareStatement(query);
-           if (mahasiswa != null )
+           if (mahasiswa.getnim() != null )
                statement.setString(1, mahasiswa.getnim());
            else
                statement.setString(1, null);
-	   if (jadwalKerjaPraktek != null)
+	   if (jadwalKerjaPraktek.getidJadwal() != 0)
                statement.setInt(2, jadwalKerjaPraktek.getidJadwal());
            else
-               statement.setInt(2, Integer.parseInt(null));      
+               statement.setInt(2, 0);      
           statement.setString(3, getnamaKegiatan());
            statement.setString(4, getinstansi());
 	   

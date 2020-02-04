@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 import base.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 /**
  *
@@ -230,18 +231,27 @@ public class FrameMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-
         
-        String nim1 = mahasiswa.getnim();
-	int jdwal = jadwalkerjapraktek.getidJadwal();
-	String keg =  txt_kegiatan.getText();
-	String insta =  txt_instansi.getText();
-	setKerjaPraktek(new KerjaPraktek(nim1,jdwal,keg,insta));
-        getKerjaPraktek().masukDB();
-	
+//        //String nim1 = getMahasiswa().getnim();
+//        /int jdwal = getJadwalKerjaPraktek().getidJadwal();
+//        
+//        if (mahasiswa.getnim() != null && jadwalkerjapraktek.getidJadwal() != 0){
+//            nim1 = getMahasiswa().getnim();
+//            jdwal = getJadwalKerjaPraktek().getidJadwal();
+//            getKerjaPraktek().setnamaKegiatan(txt_kegiatan.getText());
+//            getKerjaPraktek().setinstansi(txt_instansi.getText());
+//            setKerjaPraktek(new KerjaPraktek(nim1,jdwal,getKerjaPraktek().getnamaKegiatan(),getKerjaPraktek().getinstansi()));
+//        getKerjaPraktek().masukDB();
+        
+        
+	    
+        
 //	
-//	setKerjaPraktek(new KerjaPraktek(getMahasiswa().getnim(), getJadwalKerjaPraktek().getidJadwal(), txt_kegiatan.getText(), txt_instansi.getText()));
-//         getKerjaPraktek().masukDB();
+        String kegi = txt_kegiatan.getText();
+        String ins = txt_instansi.getText();
+        
+	setKerjaPraktek(new KerjaPraktek(getMahasiswa().getnim(), getJadwalKerjaPraktek().getidJadwal(), kegi, ins));
+         getKerjaPraktek().masukDB();
 //	
 //	
           JOptionPane.showMessageDialog(null,"DATA TERSIMPAN");
@@ -255,6 +265,7 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         daftarShowAll(true);
         txt_nama.setText(getMahasiswa().getnama());
         txt_nim.setText(getMahasiswa().getnim());
+//        kerjaPraktek.masukDB();
     }//GEN-LAST:event_btn_daftarActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
@@ -414,4 +425,24 @@ public class FrameMahasiswa extends javax.swing.JFrame {
         this.bimbingan = bimbingan;
     }
     
+    public String getnamaKegiatan(String namaKegiatan) {
+      return namaKegiatan;
+   }
+   
+   /** @param newNamaKegiatan
+    * @pdOid 93a4fe52-29b7-46a1-a083-fc38244db6c3 */
+   public void setnamaKegiatan(String newNamaKegiatan, String namaKegiatan) {
+      namaKegiatan = newNamaKegiatan;
+   }
+   
+   /** @pdOid 24d0769e-661b-4b9f-8ffb-af4a049001b9 */
+   public String getinstansi(String instansi) {
+      return instansi;
+   }
+   
+   /** @param newInstansi
+    * @pdOid 0c43bbc3-1610-452e-bdad-04dbb67ad60a */
+   public void setinstansi(String newInstansi, String instansi) {
+      instansi = newInstansi;
+   }
 }
